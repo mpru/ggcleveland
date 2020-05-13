@@ -1,15 +1,32 @@
 Package: ggcleveland
 Title: Implementation of plots from Cleveland's Visualizing Data book in ggplot2
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+Authors@R: c(
+  person(given = "Marcos",
+         family = "Prunello",
+         role = c("aut", "cre"),
+         email = "marcosprunello@gmail.com",
+         comment = c(ORCID = "0000-0002-9611-527X")
+         ),
+  person(given = "Gonzalo",
+         family = "Mari",
+         role = c("aut")
+         )
+  )
+Description: This packages provides functions to produce ggplot versions for 
+	some visualizations tools described in Cleveland's book "Visualizing Data". This
+	package is experimental and was thought to be used in the context of course of 
+	exploratory data analysis. Any contributions or feedback is appreciated. Note
+	that this package does not create any new stats or geom layers.
+Depends: R (>= 3.6.0)
+Imports:
+    dplyr,
+    tidyr,
+    ggplot2,
+    magrittr
+License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: http://github.com/mpru/ggcleveland
 BugReports: http://github.com/mpru/ggcleveland/issues
+RoxygenNote: 7.0.2
