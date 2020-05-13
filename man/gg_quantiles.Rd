@@ -33,9 +33,9 @@ gg_quantiles(futbol, dist, longp)
 gg_quantiles(futbol, dist, longp, size = 0.4, color = "red", shape = 3)
 
 # Only 2 grupos
-futbol2 <- filter(futbol, longp \%in\% c("< 0.81 m", "0.81 a 0.90 m"))
+futbol2 <- dplyr::filter(futbol, longp \%in\% c("< 0.81 m", "0.81 a 0.90 m"))
 gg_quantiles(futbol2, dist, longp)
 
 # Each groups vs quantiles from all groups combined
-gg_quantiles(futbol, dist, longp, combined = T)
+gg_quantiles(futbol, dist, longp, combined = TRUE)
 }

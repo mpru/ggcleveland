@@ -1,6 +1,3 @@
-
-# https://github.com/STAT545-UBC/Discussion/issues/451
-
 #' The gg_quantiles function
 #'
 #' Returns a quantile-quantile plot to compare any given number of groups
@@ -17,6 +14,11 @@
 #' @return a ggplot
 #' @export
 #'
+#' @importFrom dplyr ungroup pull group_by arrange mutate row_number n vars filter as_tibble rename bind_rows tibble summarise
+#' @importFrom stats quantile qqplot median
+#' @importFrom ggplot2 ggplot aes xlab ylab coord_fixed facet_grid geom_text geom_jitter geom_line geom_point geom_abline facet_wrap geom_hline
+#' @importFrom rlang .data
+#'
 #' @examples
 #' data(futbol)
 #' # Multiple groups
@@ -24,11 +26,11 @@
 #' gg_quantiles(futbol, dist, longp, size = 0.4, color = "red", shape = 3)
 #'
 #' # Only 2 grupos
-#' futbol2 <- filter(futbol, longp %in% c("< 0.81 m", "0.81 a 0.90 m"))
+#' futbol2 <- dplyr::filter(futbol, longp %in% c("< 0.81 m", "0.81 a 0.90 m"))
 #' gg_quantiles(futbol2, dist, longp)
 #'
 #' # Each groups vs quantiles from all groups combined
-#' gg_quantiles(futbol, dist, longp, combined = T)
+#' gg_quantiles(futbol, dist, longp, combined = TRUE)
 gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 
 	# NSE
@@ -55,9 +57,9 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 			# desagrupar para que no siga haciendo cálculos para cada grupo de longp
 			ungroup() %>%
 			# con todos los datos, calcular el cuantil que acumula la misma probabilidad que cada dato
-			mutate(cuantilComb = quantile(!!vble, valorf))
+			mutate(cuantilComb = quantile(!!vble, .data$valorf))
 
-		g <- ggplot(df, aes(y = !!vble, x = cuantilComb)) +
+		g <- ggplot(df, aes(y = !!vble, x = .data$cuantilComb)) +
 			geom_point(...) +
 			geom_abline(intercept = 0, slope = 1) +
 			facet_wrap(vars(!!group)) +
@@ -81,11 +83,12 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 		# Grilla con las combinaciones de los grupos, saco los que son iguales (la diagonal)
 		grilla <-
 			expand.grid(grupos, grupos, stringsAsFactors = F) %>%
-			rename(grupoX = Var1, grupoY = Var2) %>%
-			filter(grupoX != grupoY)
+			rename(grupoX = .data$Var1, grupoY = .data$Var2) %>%
+			filter(.data$grupoX != .data$grupoY)
 
-		# Funcion auxiliar para mapply, dados los nombres de dos grupos genera los cuantiles a graficar
-		# gx e gy son los nombres de los grupos, devuelve un tibble
+		# Funcion auxiliar para mapply, dados los nombres de dos grupos genera los
+		# cuantiles a graficar gx e gy son los nombres de los grupos, devuelve un
+		# tibble
 		aux <- function(gx, gy) {
 			x <- df %>% filter(!!group == gx) %>% pull(!!vble)
 			y <- df %>% filter(!!group == gy) %>% pull(!!vble)
@@ -95,10 +98,12 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 			return(dat)
 		}
 
-		# Para cada combinacion de grupos aplicar la funcion anterior y combinar los resultantes tibbles
+		# Para cada combinacion de grupos aplicar la funcion anterior y combinar los
+		# resultantes tibbles
 		rtdo <- mapply(aux, grilla$grupoX, grilla$grupoY, SIMPLIFY = F) %>% bind_rows()
 
-		# Hago un dataset para agregar como texto los nombres de las variables en los paneles de la diagonal
+		# Hago un dataset para agregar como texto los nombres de las variables en los
+		# paneles de la diagonal
 		dataTexto <- tibble(varX = grupos, varY = grupos)
 
 		# Grafico
@@ -107,7 +112,8 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 			geom_abline(aes(intercept = 0, slope = 1)) +
 			facet_grid(varY ~ varX) +
 			geom_text(data = dataTexto,
-								mapping = aes(y = mean(range(rtdo$y)), x = mean(range(rtdo$x)), label = varX)) +
+								mapping = aes(y = mean(range(rtdo$y)), x = mean(range(rtdo$x)),
+															label = dataTexto$varX)) +
 			xlab(vble) + ylab(vble)
 	}
 	return(g)

@@ -19,6 +19,8 @@ gg_sl(
 
 \item{vble}{numeric variable to be analized}
 
+\item{group}{grouping character or factor variable}
+
 \item{jitterwidth}{width argument for geom_jitter}
 
 \item{jitteralpha}{alpha argument for geom_jitter}
@@ -26,8 +28,6 @@ gg_sl(
 \item{linecol}{col argument for geom_line}
 
 \item{ylabel}{Y-axis label}
-
-\item{grouping}{character or factor variable}
 }
 \value{
 a ggplot object with the spread-location plot
@@ -40,6 +40,6 @@ data(fusion)
 gg_sl(fusion, time, nv.vv)
 gg_sl(fusion, time, nv.vv, jitterwidth = 0.4, linecol = "blue",
       ylabel = "hola", jitteralpha = 1) +
-      scale_color_discrete("Grupo")
+      ggplot2::scale_color_discrete("Grupo")
 
 }
