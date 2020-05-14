@@ -25,11 +25,14 @@ gg_sl <- function(df, vble, group,
 									 jitterwidth = 0.1, jitteralpha = 0.5, linecol = "red",
 									 ylabel = expression(sqrt(abs( " Residuos ")))) {
 
-	# Agregar controles: df data.frame, vble numeric, group character
-
-	# NSE
+	# NSE y controles
+	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
 	vble <- enquo(vble)
 	group <- enquo(group)
+	if (!is.numeric(eval_tidy(vble, df)))
+		stop(paste(quo_text(vble), "provided for the vble argument is not a numeric variable"))
+	if (!is.character(eval_tidy(group, df)) && !is.factor(eval_tidy(group, df)))
+		stop(paste(quo_text(group), "provided for the group argument is neither a character nor a factor variable"))
 
 	# Calcular mediana y residuos
 	df1 <-

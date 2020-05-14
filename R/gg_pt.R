@@ -41,6 +41,17 @@ gg_pt <- function(df, vble, group = NULL,
 	vble <- enquo(vble)
 	group <- enquo(group)
 
+	# NSE y controles
+	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
+	vble <- enquo(vble)
+	group <- enquo(group)
+	if (!is.numeric(eval_tidy(vble, df)))
+		stop(paste(quo_text(vble), "provided for the vble argument is not a numeric variable"))
+	if (!quo_is_null(group) && !is.character(eval_tidy(group, df)) && !is.factor(eval_tidy(group, df)))
+		stop(paste(quo_text(group), "provided for the group argument is neither a character nor a factor variable"))
+	if (!is.numeric(taus)) stop("taus must be a numeric vector")
+	if (!is.numeric(nrow) && length(nrow) > 2) stop("Argument nrow must be a numeric value of length one")
+
 	# Transformar valores
 	datos_pot <-
 		sapply(taus, transf_pot, x = pull(df, !!vble)) %>%

@@ -32,3 +32,5 @@ LazyData: true
 URL: http://github.com/mpru/ggcleveland
 BugReports: http://github.com/mpru/ggcleveland/issues
 RoxygenNote: 7.0.2
+Suggests: 
+    testthat

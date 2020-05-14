@@ -33,11 +33,15 @@
 #' gg_quantiles(futbol, dist, longp, combined = TRUE)
 gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 
-	# NSE
+	# NSE y controles
+	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
 	vble <- enquo(vble)
 	group <- enquo(group)
-
-	# Controles
+	if (!is.numeric(eval_tidy(vble, df)))
+		stop(paste(quo_text(vble), "provided for the vble argument is not a numeric variable"))
+	if (!is.character(eval_tidy(group, df)) && !is.factor(eval_tidy(group, df)))
+		stop(paste(quo_text(group), "provided for the group argument is neither a character nor a factor variable"))
+	if (!is.logical(combined)) stop("Argument combined must be either TRUE or FALSE")
 	df <- ungroup(df) # si esta agrupada no deja modificar esa vble
 
 	# if (!is.numeric(pull(df, vble))) stop(paste(vble, "no es numerica"))

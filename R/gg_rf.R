@@ -39,12 +39,18 @@ gg_rf <- function(df, vble, fitted, res,
 									ylabel = quo_text(vble),
 									...) {
 
-	# NSE
+	# NSE y controles
+	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
 	vble <- enquo(vble)
 	fitted <- enquo(fitted)
 	res <- enquo(res)
-
-	# Controles AGREGAR
+	if (!is.numeric(eval_tidy(vble, df)))
+		stop(paste(quo_text(vble), "provided for the vble argument is not a numeric variable"))
+	if (!is.numeric(eval_tidy(fitted, df)))
+		stop(paste(quo_text(fitted), "provided for the fitted argument is not a numeric variable"))
+	if (!is.numeric(eval_tidy(res, df)))
+		stop(paste(quo_text(res), "provided for the res argument is not a numeric variable"))
+	if (!is.logical(cen_obs)) stop("Argument cen_obs must be either TRUE or FALSE")
 
 	df <-
 		df %>%

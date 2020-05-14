@@ -23,13 +23,14 @@
 #' gg_tmd(futbol2, dist, longp)
 gg_tmd <- function(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...) {
 
-	# NSE
+	# NSE y controles
+	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
 	vble <- enquo(vble)
 	group <- enquo(group)
-
-	# Controles AGREGAR vble numerica, group character o factor
-	# if (!is.numeric(pull(df, vble))) stop(paste(vble, "no es numerica"))
-	# if (is.numeric(pull(df, group))) mutate(df, !!sym(group) := as.character(pull(df, group))) # para crear una columna cuyo nombre fue pasado como caracter en group
+	if (!is.numeric(eval_tidy(vble, df)))
+		stop(paste(quo_text(vble), "provided for the vble argument is not a numeric variable"))
+	if (!is.character(eval_tidy(group, df)) && !is.factor(eval_tidy(group, df)))
+		stop(paste(quo_text(group), "provided for the group argument is neither a character nor a factor variable"))
 
 	# Identificar los grupos
 	grupos <- unique(pull(df, !!group))
