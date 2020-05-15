@@ -34,8 +34,11 @@ considered to be the log transform)}
 
 \item{...}{parameters to be passed to stat_qq(), such as size, color, shape.}
 }
+\value{
+a ggplot
+}
 \description{
-Returns of normal QQ plots for a set of power transformations. If there are
+Returns normal QQ plots for a set of power transformations. If there are
 groups in the data, transformations can be applied separately to each of
 them.
 }

@@ -25,7 +25,7 @@ Análisis Exploratorio de Datos. Se encuentra en desarrollo y aún no ha
 sido usado con diversos conjuntos de datos. Cualquier comentario o
 sugerencia es bienvenida.
 
-This packages provides functions to produce ggplot versions for some
+This package provides functions to produce ggplot versions for some
 visualizations tools described in Cleveland’s book “Visualizing Data”.
 It is an experimental package, and was thought to be used in the context
 of a course on exploratory data analysis. Any contributions or feedback

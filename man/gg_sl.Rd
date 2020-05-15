@@ -11,7 +11,8 @@ gg_sl(
   jitterwidth = 0.1,
   jitteralpha = 0.5,
   linecol = "red",
-  ylabel = expression(sqrt(abs(" Residuos ")))
+  ylabel = expression(sqrt(abs(" Residuos "))),
+  xlabel = "Medians"
 )
 }
 \arguments{
@@ -27,7 +28,9 @@ gg_sl(
 
 \item{linecol}{col argument for geom_line}
 
-\item{ylabel}{Y-axis label}
+\item{ylabel}{y-axis label}
+
+\item{xlabel}{x-axis label}
 }
 \value{
 a ggplot object with the spread-location plot

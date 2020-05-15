@@ -1,0 +1,10 @@
+template:
+  params:
+    bootswatch: united
+
+navbar:
+  right:
+   - icon: fa-twitter
+     href: https://twitter.com/mrqtsp
+   - icon: fa-github
+     href: https://github.com/mpru/ggcleveland

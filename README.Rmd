@@ -32,7 +32,7 @@ Web: [https://mpru.github.io/ggcleveland/](https://mpru.github.io/ggcleveland/)
 
 Este paquete implementa algunas funciones para crear las versiones en `ggplot2` de algunos gráficos presentados por Cleveland en su libro "Visualizing Data". Ha sido creado para ser usado en cursos de Análisis Exploratorio de Datos. Se encuentra en desarrollo y aún no ha sido usado con diversos conjuntos de datos. Cualquier comentario o sugerencia es bienvenida.
 
-This packages provides functions to produce ggplot versions for some visualizations tools described in Cleveland's book "Visualizing Data". It is an experimental package, and was thought to be used in the context of a course on exploratory data analysis. Any contributions or feedback are appreciated.
+This package provides functions to produce ggplot versions for some visualizations tools described in Cleveland's book "Visualizing Data". It is an experimental package, and was thought to be used in the context of a course on exploratory data analysis. Any contributions or feedback are appreciated.
 
 ## Instalación / Instalation
 

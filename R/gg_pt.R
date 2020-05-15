@@ -1,6 +1,6 @@
 #' The gg_pt function
 #'
-#' Returns of normal QQ plots for a set of power transformations. If there are
+#' Returns normal QQ plots for a set of power transformations. If there are
 #' groups in the data, transformations can be applied separately to each of
 #' them.
 #'
@@ -15,7 +15,7 @@
 #' @param nrow number of rows for facet_wrap, only applied when group is NULL.
 #' @param ... parameters to be passed to stat_qq(), such as size, color, shape.
 #'
-#' @returna a ggplot
+#' @return a ggplot
 #' @export
 #'
 #' @examples

@@ -8,7 +8,8 @@
 #' @param jitterwidth width argument for geom_jitter
 #' @param jitteralpha alpha argument for geom_jitter
 #' @param linecol col argument for geom_line
-#' @param ylabel Y-axis label
+#' @param ylabel y-axis label
+#' @param xlabel x-axis label
 #'
 #' @return a ggplot object with the spread-location plot
 #' @importFrom magrittr %>%
