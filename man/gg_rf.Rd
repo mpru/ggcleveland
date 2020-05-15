@@ -49,6 +49,10 @@ a ggplot
 \description{
 Returns a Residual-Fit plot, optionally including centered observed values
 }
+\details{
+The option to include the centered observed values as part of this
+  plot was inspired by work done by Eng. German Beltzer in lattice.
+}
 \examples{
 
 datos <- dplyr::group_by(futbol, longp)

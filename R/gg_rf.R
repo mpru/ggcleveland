@@ -17,6 +17,8 @@
 #' @param ... parameters to be passed to stat_qq(), such as size, color, shape.
 #'
 #' @return a ggplot
+#' @details The option to include the centered observed values as part of this
+#'   plot was inspired by work done by Eng. German Beltzer in lattice.
 #' @export
 #'
 #' @examples
