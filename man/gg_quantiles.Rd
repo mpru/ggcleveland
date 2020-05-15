@@ -4,7 +4,15 @@
 \alias{gg_quantiles}
 \title{The gg_quantiles function}
 \usage{
-gg_quantiles(df, vble, group, combined = FALSE, ...)
+gg_quantiles(
+  df,
+  vble,
+  group,
+  combined = FALSE,
+  xlabel = NULL,
+  ylabel = NULL,
+  ...
+)
 }
 \arguments{
 \item{df}{dataframe}
@@ -17,6 +25,10 @@ gg_quantiles(df, vble, group, combined = FALSE, ...)
 plots. If TRUE, it produces a QQ plot of quantiles of each group versus
 quantiles calculated by the combination of all groups. This is useful to
 study residuals from a fit.}
+
+\item{xlabel}{label for x-axis}
+
+\item{ylabel}{label for y-axis}
 
 \item{...}{parameters to be passed to geom_point(), such as size, color, shape.}
 }

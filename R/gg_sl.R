@@ -22,8 +22,9 @@
 #'       ggplot2::scale_color_discrete("Grupo")
 #'
 gg_sl <- function(df, vble, group,
-									 jitterwidth = 0.1, jitteralpha = 0.5, linecol = "red",
-									 ylabel = expression(sqrt(abs( " Residuos ")))) {
+									jitterwidth = 0.1, jitteralpha = 0.5, linecol = "red",
+									ylabel = expression(sqrt(abs( " Residuos "))),
+									xlabel = "Medians") {
 
 	# NSE y controles
 	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
@@ -33,6 +34,8 @@ gg_sl <- function(df, vble, group,
 		stop(paste(quo_text(vble), "provided for the vble argument is not a numeric variable"))
 	if (!is.character(eval_tidy(group, df)) && !is.factor(eval_tidy(group, df)))
 		stop(paste(quo_text(group), "provided for the group argument is neither a character nor a factor variable"))
+
+	if (length(unique(pull(df, !!group))) < 2) stop("There's only one group")
 
 	# Calcular mediana y residuos
 	df1 <-
@@ -53,7 +56,7 @@ gg_sl <- function(df, vble, group,
 	g <- ggplot(df1, aes(x = .data$mna, y = .data$mna_res, color = !!group)) +
 					geom_jitter(alpha = jitteralpha, width = jitterwidth, height = 0) +
 					geom_line(data = datos_linea, aes(x = .data$x, y = .data$y), col = linecol) +
-					ylab(ylabel)
+					ylab(ylabel) + xlab(xlabel)
 
 	return(g)
 }

@@ -9,6 +9,8 @@
 #'   plots. If TRUE, it produces a QQ plot of quantiles of each group versus
 #'   quantiles calculated by the combination of all groups. This is useful to
 #'   study residuals from a fit.
+#' @param xlabel label for x-axis
+#' @param ylabel label for y-axis
 #' @param ... parameters to be passed to geom_point(), such as size, color, shape.
 #'
 #' @return a ggplot
@@ -16,8 +18,8 @@
 #'
 #' @importFrom dplyr ungroup pull group_by arrange mutate row_number n vars filter as_tibble rename bind_rows tibble summarise starts_with
 #' @importFrom stats quantile qqplot median qunif setNames
-#' @importFrom ggplot2 ggplot aes xlab ylab coord_fixed facet_grid geom_text geom_jitter geom_line geom_point geom_abline facet_wrap geom_hline stat_qq stat_qq_line
-#' @importFrom rlang .data quo_text quo_is_null
+#' @importFrom ggplot2 ggplot aes xlab ylab coord_fixed facet_grid geom_text geom_jitter geom_line geom_point geom_abline facet_wrap geom_hline stat_qq stat_qq_line labs
+#' @importFrom rlang .data quo_text quo_is_null eval_tidy
 #'
 #' @examples
 #' data(futbol)
@@ -31,7 +33,8 @@
 #'
 #' # Each groups vs quantiles from all groups combined
 #' gg_quantiles(futbol, dist, longp, combined = TRUE)
-gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
+gg_quantiles <- function(df, vble, group, combined = FALSE,
+												 xlabel = NULL, ylabel = NULL, ...) {
 
 	# NSE y controles
 	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
@@ -43,9 +46,6 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 		stop(paste(quo_text(group), "provided for the group argument is neither a character nor a factor variable"))
 	if (!is.logical(combined)) stop("Argument combined must be either TRUE or FALSE")
 	df <- ungroup(df) # si esta agrupada no deja modificar esa vble
-
-	# if (!is.numeric(pull(df, vble))) stop(paste(vble, "no es numerica"))
-	# if (is.numeric(pull(df, group))) mutate(df, !!sym(group) := as.character(pull(df, group))) # para crear una columna cuyo nombre fue pasado como caracter en group
 
 	# Identificar los grupos
 	grupos <- unique(pull(df, !!group))
@@ -66,8 +66,7 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 		g <- ggplot(df, aes(y = !!vble, x = .data$cuantilComb)) +
 			geom_point(...) +
 			geom_abline(intercept = 0, slope = 1) +
-			facet_wrap(vars(!!group)) +
-			xlab("Cuantiles combinados") + ylab("Cuantiles de cada grupo")
+			facet_wrap(vars(!!group))
 
 	} else if (length(grupos) == 2) {
 		# Dos grupos, un solo grafico de cuantiles (diapo 13)
@@ -79,8 +78,7 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 			ggplot(aes(x = x, y = y)) +
 			geom_point(...) +
 			geom_abline(intercept = 0, slope = 1) +
-			coord_fixed() +
-			xlab(grupos[1]) + ylab(grupos[2])
+			coord_fixed()
 	} else {
 		# Mas de dos grupos, matriz de scatterplots de graficos de cuantiles (diapo 18)
 
@@ -117,8 +115,14 @@ gg_quantiles <- function(df, vble, group, combined = FALSE, ...) {
 			facet_grid(varY ~ varX) +
 			geom_text(data = dataTexto,
 								mapping = aes(y = mean(range(rtdo$y)), x = mean(range(rtdo$x)),
-															label = dataTexto$varX)) +
-			xlab(vble) + ylab(vble)
+															label = dataTexto$varX))
 	}
+	xlabel <- ifelse(!is.null(xlabel), xlabel,
+									 ifelse(combined, "Quantiles of combined data",
+									        ifelse(length(grupos) == 2, grupos[1], quo_text(vble))))
+	ylabel <- ifelse(!is.null(ylabel), ylabel,
+									 ifelse(combined, "Quantiles of each group",
+									 			  ifelse(length(grupos) == 2, grupos[2], quo_text(vble))))
+	g <- g + labs(x = xlabel, y = ylabel)
 	return(g)
 }

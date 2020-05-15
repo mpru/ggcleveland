@@ -35,12 +35,6 @@ gg_pt <- function(df, vble, group = NULL,
 									ylabel = paste("Transformed", quo_text(vble)),
 									nrow = 2,...) {
 
-	# Agregar controles
-
-	# NSE
-	vble <- enquo(vble)
-	group <- enquo(group)
-
 	# NSE y controles
 	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
 	vble <- enquo(vble)
@@ -50,7 +44,8 @@ gg_pt <- function(df, vble, group = NULL,
 	if (!quo_is_null(group) && !is.character(eval_tidy(group, df)) && !is.factor(eval_tidy(group, df)))
 		stop(paste(quo_text(group), "provided for the group argument is neither a character nor a factor variable"))
 	if (!is.numeric(taus)) stop("taus must be a numeric vector")
-	if (!is.numeric(nrow) && length(nrow) > 2) stop("Argument nrow must be a numeric value of length one")
+	if (!is.numeric(nrow)) stop("nrow must be a number")
+	if (length(nrow) > 2 || nrow < 1) stop("Argument nrow must be a numeric value of length one, greater or equal to 1")
 
 	# Transformar valores
 	datos_pot <-

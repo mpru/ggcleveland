@@ -34,7 +34,7 @@ gg_tmd <- function(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...)
 
 	# Identificar los grupos
 	grupos <- unique(pull(df, !!group))
-	if (length(grupos) < 2) stop("Hay un solo conjunto de datos")
+	if (length(grupos) < 2) stop("There's only one group")
 
 	if (length(grupos) == 2) {
 		# Dos grupos, un solo panel (diapo 16)

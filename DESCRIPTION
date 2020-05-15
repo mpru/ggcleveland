@@ -15,8 +15,8 @@ Authors@R: c(
   )
 Description: This packages provides functions to produce ggplot versions for 
 	some visualizations tools described in Cleveland's book "Visualizing Data". This
-	package is experimental and was thought to be used in the context of course of 
-	exploratory data analysis. Any contributions or feedback is appreciated. Note
+	package is experimental and was thought to be used in the context of a course on 
+	exploratory data analysis. Any contributions or feedback are appreciated. Note
 	that this package does not create any new stats or geom layers.
 Depends: R (>= 3.6.0)
 Imports:
