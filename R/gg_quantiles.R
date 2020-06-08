@@ -18,7 +18,7 @@
 #'
 #' @importFrom dplyr ungroup pull group_by arrange mutate row_number n vars filter as_tibble rename bind_rows tibble summarise starts_with
 #' @importFrom stats quantile qqplot median qunif setNames
-#' @importFrom ggplot2 ggplot aes xlab ylab coord_fixed facet_grid geom_text geom_jitter geom_line geom_point geom_abline facet_wrap geom_hline stat_qq stat_qq_line labs
+#' @importFrom ggplot2 ggplot aes xlab ylab coord_fixed facet_grid geom_text geom_jitter geom_line geom_point geom_abline facet_wrap geom_hline stat_qq stat_qq_line labs theme stat_smooth element_blank geom_rect
 #' @importFrom rlang .data quo_text quo_is_null eval_tidy
 #'
 #' @examples

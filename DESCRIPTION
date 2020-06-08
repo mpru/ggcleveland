@@ -25,6 +25,9 @@ Imports:
     ggplot2,
     rlang,
     magrittr,
+    graphics,
+    readr,
+    egg,
     vctrs
 License: GPL-2 | file LICENSE
 Encoding: UTF-8

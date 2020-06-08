@@ -46,7 +46,7 @@ desde [GitHub](https://github.com/mpru/ggcleveland) con:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("mpru/karel")
+devtools::install_github("mpru/ggcleveland")
 ```
 
 ## Ejemplos / Examples
@@ -176,3 +176,22 @@ gg_pt(futbol2, dist, longp, taus = c(-1, -0.5, 0, 0.5))
 ```
 
 <img src="man/figures/README-unnamed-chunk-7-2.png" width="70%" style="display: block; margin: auto;" />
+
+### gg\_coplot
+
+La función `gg_coplot()` produce *conditioning plots* o *coplots*, los
+cuales son una herramienta de visualización útil para estudiar cómo una
+variable respuesta depende de 2 o más factores. Un **coplot** permite
+visualizar dependencia condicional.
+
+``` r
+data(rubber)
+gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
+  number_bins = 6, overlap = 3/4,
+  ylabel = "Pérdida de abrasión (g/hp-hour))",
+  xlabel = "Resistencia a la tracción (kg/cm2)",
+  facetlabel = "Dureza (grados Shore)", 
+  loess_family = "symmetric", size = 2)
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />

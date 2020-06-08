@@ -114,7 +114,7 @@ install.packages("karel")
 -->
 <p>Se puede instalar la versión en desarrollo del paquete <code>ggcleveland</code> desde <a href="https://github.com/mpru/ggcleveland">GitHub</a> con:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"mpru/karel"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"mpru/ggcleveland"</span>)</a></code></pre></div>
 </div>
 <div id="ejemplos--examples" class="section level2">
 <h2 class="hasAnchor">
@@ -196,6 +196,19 @@ install.packages("karel")
 <a class="sourceLine" id="cb11-2" title="2"><span class="co"># Para cada grupo por separado</span></a>
 <a class="sourceLine" id="cb11-3" title="3"><span class="kw"><a href="reference/gg_pt.html">gg_pt</a></span>(futbol2, dist, longp, <span class="dt">taus =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">1</span>, <span class="fl">-0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>))</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-7-2.png" width="70%" style="display: block; margin: auto;"></p>
+</div>
+<div id="gg_coplot" class="section level3">
+<h3 class="hasAnchor">
+<a href="#gg_coplot" class="anchor"></a>gg_coplot</h3>
+<p>La función <code><a href="reference/gg_coplot.html">gg_coplot()</a></code> produce <em>conditioning plots</em> o <em>coplots</em>, los cuales son una herramienta de visualización útil para estudiar cómo una variable respuesta depende de 2 o más factores. Un <strong>coplot</strong> permite visualizar dependencia condicional.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(rubber)</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw"><a href="reference/gg_coplot.html">gg_coplot</a></span>(rubber, <span class="dt">x =</span> tensile.strength, <span class="dt">y =</span> abrasion.loss, <span class="dt">faceting =</span> hardness,</a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="dt">number_bins =</span> <span class="dv">6</span>, <span class="dt">overlap =</span> <span class="dv">3</span><span class="op">/</span><span class="dv">4</span>,</a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="dt">ylabel =</span> <span class="st">"Pérdida de abrasión (g/hp-hour))"</span>,</a>
+<a class="sourceLine" id="cb12-5" title="5">  <span class="dt">xlabel =</span> <span class="st">"Resistencia a la tracción (kg/cm2)"</span>,</a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="dt">facetlabel =</span> <span class="st">"Dureza (grados Shore)"</span>, </a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="dt">loess_family =</span> <span class="st">"symmetric"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 </div>
