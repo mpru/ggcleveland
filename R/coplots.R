@@ -35,8 +35,8 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 	intervals = graphics::co.intervals(values, number = number_bins, overlap = overlap)
 	## indices is a list, with the ith element containing the indices of the
 	## observations falling into the ith interval
-	indices = apply(intervals, 1, function(x)
-		which(values <= x[2] & values >= x[1]))
+	indices = indices = lapply(split(intervals, seq(nrow(intervals))),
+														 function(x) which(values <= x[2] & values >= x[1]))
 	## interval_descriptions is formatted like indices, but has interval
 	## names instead of indices of the samples falling in the index
 	interval_descriptions = apply(intervals, 1, function(x) {
