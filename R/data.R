@@ -139,3 +139,30 @@
 "etanol"
 
 
+#' Dataset environmental
+#'
+#' From Cleveland (1993): These measurements were made on 111 days from May to September of 1973 at sites in the New York City metropolitan region; there is one measurement of each variable on each day. Solar radiation is the amount from 0800 to 1200 in the frequency band 4000-7700A, and was measured in Central Park, New York City. Wind speed is the average of values at 0700 and 1000, and was measured at LaGuardia Airport, which is about 7 km from Central Park. Temperature is the daily maximum, and was also measured at LaGuardia. Ozone is the cube root of the average of hourly values from 1300 to 1500, and was measured at Roosevelt Island, which is about 2 km from Central Park and 5 km from LaGuardia.
+#' @format A data frame with 111 rows and 2 variables:
+#' \describe{
+#'   \item{dia}{day}
+#'   \item{ozono}{ozone}
+#'   \item{radiacion}{radiation}
+#'   \item{temperatura}{temperature}
+#'   \item{viento}{wind}
+#'   }
+#' @source Cleveland W. S. (1993). “Visualizing Data”. Hobart Press.
+"environmental"
+
+#' Dataset ozone
+#'
+#' From Cleveland (1993): The data are daily maximum ozone concentrations at ground level on 132 days from May 1,1974 to September 30,1974 at two sites in the U.S.A. — Yonkers, New York and Stamford, Connecticut — which are approximately 30 km from one another. The sample for each measurement is the air mass on a particular day, and the bivariate data arise from two measurements at the two sites.
+#' @format A data frame with 132 rows and 2 variables:
+#' \describe{
+#'   \item{dia}{day}
+#'   \item{yonkers}{air mass at Yonkers}
+#'   \item{stamford}{air mass at Stamford}
+#'   }
+#' @source Cleveland W. S. (1993). “Visualizing Data”. Hobart Press.
+"ozone"
+
+
