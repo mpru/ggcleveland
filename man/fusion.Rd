@@ -7,17 +7,17 @@
 \format{
 A data frame with 78 rows and 2 variables:
 \describe{
-  \item{time}{tiempo de fusión, segundos}
-  \item{nv.vv}{grupo}
+  \item{time}{fusion times, seconds}
+  \item{nv.vv}{experimental group}
 }
 }
 \source{
-?
+Cleveland W. S. (1993). “Visualizing Data”. Hobart Press.
 }
 \usage{
 fusion
 }
 \description{
-Acá hay que poner la descripción del dataset
+From Cleveland (1993): An experiment was run to study the effect of prior knowledge of an object's form on fusion time when looking at a stereogram. The experimenters measured the time of first fusion for a particular random dot stereogram. There were two groups of subjects. The NV subjects received either no information or verbal information. The VV subjects received a combination of verbal and visual information, either suggestive drawings of the object or a model of it. Thus the VV subjects actually saw something that depicted the object, but the NV subjects did not. The goal in analyzing the fusion times is to determine if there is a shift in the distribution of the VV times toward lower values compared with the NV times.
 }
 \keyword{datasets}

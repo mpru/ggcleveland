@@ -12,12 +12,12 @@ A data frame with 300 rows and 2 variables:
 }
 }
 \source{
-?
+Unknown
 }
 \usage{
 futbol
 }
 \description{
-Acá hay que poner la descripción del dataset
+Data about leg length and kick distance from 300 football players.
 }
 \keyword{datasets}

@@ -7,20 +7,20 @@
 \format{
 A data frame with 78 rows and 2 variables:
 \describe{
-  \item{hardness}{...}
-  \item{tensile.strength}{...}
-  \item{abrasion.loss}{...}
-  \item{ts.low}{...}
-  \item{ts.high}{...}
+  \item{hardness}{hardness}
+  \item{tensile.strength}{tensile strength}
+  \item{abrasion.loss}{abrasion loss}
+  \item{ts.low}{tensile.strength - 180 if tensile.strength < 180 or 0 otherwise}
+  \item{ts.high}{tensile.strength - 180 if tensile.strength > 180 or 0 otherwise}
 }
 }
 \source{
-?
+Cleveland W. S. (1993). “Visualizing Data”. Hobart Press.
 }
 \usage{
 rubber
 }
 \description{
-Acá hay que poner la descripción del dataset
+From Cleveland (1993): data from an industrial experiment in which thirty rubber specimens were rubbed by an abrasive material. Measurements of three variables - abrasion loss, hardness, and tensile strength - were made for each specimen. Abrasion loss is the amount of material abraded from a specimen per unit of energy expended in the rubbing; tensile strength is the force per unit of cross-sectional area required to break a specimen; and hardness is the rebound height of a steel indenter dropped onto a specimen. The goal is to determine the dependence of abrasion loss on tensile strength and hardness
 }
 \keyword{datasets}
