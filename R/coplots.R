@@ -105,7 +105,7 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 #'
 gg_coplot <- function(df, x, y, faceting, number_bins = 6, overlap = 0.5,
 											loess = TRUE, loess_span = 3/4, loess_degree = 1, loess_family = "gaussian",
-											ylabel = quo_text(x), xlabel = quo_text(y), facetlabel = quo_text(faceting),
+											ylabel = quo_text(y), xlabel = quo_text(x), facetlabel = quo_text(faceting),
 											show_intervals = TRUE, intervals_height = 0.25,
 											remove_strip = FALSE, facets_nrow = NULL, hline_at = NULL, ...) {
 

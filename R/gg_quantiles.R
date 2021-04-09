@@ -119,10 +119,10 @@ gg_quantiles <- function(df, vble, group, combined = FALSE,
 	}
 	xlabel <- ifelse(!is.null(xlabel), xlabel,
 									 ifelse(combined, "Quantiles of combined data",
-									        ifelse(length(grupos) == 2, grupos[1], quo_text(vble))))
+									        ifelse(length(grupos) == 2, as.character(grupos[1]), quo_text(vble))))
 	ylabel <- ifelse(!is.null(ylabel), ylabel,
 									 ifelse(combined, "Quantiles of each group",
-									 			  ifelse(length(grupos) == 2, grupos[2], quo_text(vble))))
+									 			  ifelse(length(grupos) == 2, as.character(grupos[2]), quo_text(vble))))
 	g <- g + labs(x = xlabel, y = ylabel)
 	return(g)
 }

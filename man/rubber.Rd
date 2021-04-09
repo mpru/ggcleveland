@@ -4,14 +4,16 @@
 \name{rubber}
 \alias{rubber}
 \title{Dataset rubber}
-\format{A data frame with 78 rows and 2 variables:
+\format{
+A data frame with 78 rows and 2 variables:
 \describe{
   \item{hardness}{...}
   \item{tensile.strength}{...}
   \item{abrasion.loss}{...}
   \item{ts.low}{...}
   \item{ts.high}{...}
-}}
+}
+}
 \source{
 ?
 }

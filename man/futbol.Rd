@@ -4,11 +4,13 @@
 \name{futbol}
 \alias{futbol}
 \title{Dataset futbol}
-\format{A data frame with 300 rows and 2 variables:
+\format{
+A data frame with 300 rows and 2 variables:
 \describe{
   \item{longp}{category of leg length}
   \item{dist}{kick distance}
-}}
+}
+}
 \source{
 ?
 }

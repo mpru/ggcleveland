@@ -4,11 +4,13 @@
 \name{fusion}
 \alias{fusion}
 \title{Dataset fusion}
-\format{A data frame with 78 rows and 2 variables:
+\format{
+A data frame with 78 rows and 2 variables:
 \describe{
   \item{time}{tiempo de fusión, segundos}
   \item{nv.vv}{grupo}
-}}
+}
+}
 \source{
 ?
 }

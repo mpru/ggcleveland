@@ -1,6 +1,6 @@
 Package: ggcleveland
 Title: Implementation of plots from Cleveland's Visualizing Data book in ggplot2
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Authors@R: c(
   person(given = "Marcos",
          family = "Prunello",
@@ -34,7 +34,7 @@ Encoding: UTF-8
 LazyData: true
 URL: http://github.com/mpru/ggcleveland
 BugReports: http://github.com/mpru/ggcleveland/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
