@@ -7,12 +7,12 @@
 \format{
 A data frame with 323 rows and 6 variables:
 \describe{
-  \item{ubicacion}{day}
-  \item{este.oeste}{air mass at Yonkers}
-  \item{norte.sur}{air mass at Stamford}
-  \item{angulo}{air mass at Stamford}
-  \item{posicion.radial}{air mass at Stamford}
-  \item{velocidad}{air mass at Stamford}
+  \item{ubicacion}{location number}
+  \item{este.oeste}{east-west position}
+  \item{norte.sur}{south-north position}
+  \item{angulo}{angle}
+  \item{posicion.radial}{radial position}
+  \item{velocidad}{velocity}
   }
 }
 \source{
