@@ -166,3 +166,19 @@
 "ozone"
 
 
+#' Dataset galaxy
+#'
+#' From Cleveland (1993): NGC 7531 is a spiral galaxy in the Southern Hemisphere. If the only motion of NGC 7531 relative to the earth were the rapid recession due to the big bang, then over the entire region, the velocity relative to the earth would be constant and equal to about 1600 km/sec. But the actual motion is complex. The galaxy appears to be spinning, and there are other motions that are not well understood. The velocity at different points of the galaxy varies by more than 350 km/sec. These data present the locations where 323 measurements were made of the galaxy velocity. The two scales, whose units are arc seconds, are east-west and south-north positions, which form a coordinate system for the celestial sphere based on the earth's standard coordinate system. The goal in analyzing the galaxy data is to determine how the velocity measurements vary over the measurement region; thus velocity is a response and the two coordinate variables are factors.
+#' @format A data frame with 323 rows and 6 variables:
+#' \describe{
+#'   \item{ubicacion}{day}
+#'   \item{este.oeste}{air mass at Yonkers}
+#'   \item{norte.sur}{air mass at Stamford}
+#'   \item{angulo}{air mass at Stamford}
+#'   \item{posicion.radial}{air mass at Stamford}
+#'   \item{velocidad}{air mass at Stamford}
+#'   }
+#' @source Cleveland W. S. (1993). “Visualizing Data”. Hobart Press.
+"galaxy"
+
+
