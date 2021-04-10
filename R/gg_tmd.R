@@ -1,6 +1,6 @@
 #' The gg_tmd function
 #'
-#' Returns Tukey's Mean-Difference plot.
+#' Returns Tukey's Mean-Difference plot for one-way data
 #'
 #' @param df dataframe
 #' @param vble numeric variable to be analized
@@ -88,4 +88,59 @@ gg_tmd <- function(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...)
 	g <- g + xlab(xlabel) + ylab(ylabel)
 	return(g)
 }
+
+
+#' The gg_tmd_paired function
+#'
+#' Returns Tukey's Mean-Difference plot for paired data (both variables must be measured in the same scale).
+#'
+#' @param df dataframe
+#' @param vble1,vble2 numeric variables to be analized
+#' @param loess logical; should a loess smoothing curve be added to the coplots?
+#'   Defaults to TRUE.
+#' @param loess_span span parameter for loess
+#' @param loess_degree degree parameter for loess
+#' @param loess_family famiyly argument for the loess() function
+#' @param xlabel label for x-axis, defaults to "Mean"
+#' @param ylabel label for y-axis, defaults to "Difference"
+#' @param ... parameters to be passed to geom_point(), such as size, color, shape.
+#'
+#' @details Differences are computed as `vble1 - vble2`
+#' @return a ggplot
+#' @export
+#'
+#' @examples
+#' gg_tmd_paired(ozone, stamford, yonkers)
+gg_tmd_paired <- function(df, vble1, vble2,
+													xlabel = "Mean", ylabel = "Difference",
+													loess = TRUE, loess_span = 1,
+													loess_degree = 1, loess_family = "gaussian", ...) {
+
+	# NSE y controles
+	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
+	vble1 <- enquo(vble1)
+	vble2 <- enquo(vble2)
+	if (!is.numeric(eval_tidy(vble1, df)))
+		stop(paste(quo_text(vble1), "provided for the vble1 argument is not a numeric variable"))
+	if (!is.numeric(eval_tidy(vble2, df)))
+		stop(paste(quo_text(vble2), "provided for the vble2 argument is not a numeric variable"))
+
+	# Gráfico
+	g <-
+		df %>%
+		mutate(resta = !!vble1 - !!vble2, media = (!!vble1 + !!vble2) / 2) %>%
+		ggplot(aes(x = .data$media, y = .data$resta)) +
+		geom_point(...) +
+		geom_hline(yintercept = 0) +
+		xlab(xlabel) + ylab(ylabel)
+
+	if (loess) {
+		g <- g +
+			stat_smooth(method = "loess", se = FALSE, span = loess_span,
+									method.args = list(degree = loess_degree, family = loess_family))
+	}
+
+	return(g)
+}
+
 

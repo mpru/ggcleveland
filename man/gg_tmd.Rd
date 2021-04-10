@@ -23,7 +23,7 @@ gg_tmd(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...)
 a ggplot
 }
 \description{
-Returns Tukey's Mean-Difference plot.
+Returns Tukey's Mean-Difference plot for one-way data
 }
 \examples{
 data(futbol)
