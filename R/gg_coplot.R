@@ -80,7 +80,10 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 #' @param loess_family famiyly argument for the loess() function
 #' @param ylabel label for y-axis
 #' @param xlabel label for x-axis
-#' @param facetlabel label for faceting variable
+#' @param facet_label label for faceting variable
+#' @param facet_labeller defaults to NULL so facet labels are automatically
+#'   produced, but can take a fuction to be used in `facet_wrap(~faceting,
+#'   labeller = labeller(faceting = facet_labeler))`
 #' @param show_intervals logical; should the overlapping intervals be shown on
 #'   their own panel on the top of the figure? Defaults to TRUE.
 #' @param intervals_height numeric between 0 and 1, relative size of the
@@ -93,6 +96,9 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 #' @param ... addtional parameters passed to geom_point()
 #'
 #' @return a coplot
+#' @details If the number of bins is equal to the number of unique values in the
+#'   faceting variable, then no overlaping intervals are produced and each value
+#'   in the faceting variable is used as a slice.
 #' @export
 #'
 #' @examples
@@ -101,11 +107,13 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 #'   number_bins = 6, overlap = 3/4,
 #'   ylabel = "Pérdida de abrasión (g/hp-hour))",
 #'   xlabel = "Resistencia a la tracción (kg/cm2)",
-#'   facetlabel = "Dureza (grados Shore)", loess_family = "symmetric", size = 2)
+#'   facet_label = "Dureza (grados Shore)", loess_family = "symmetric", size = 2)
 #'
 gg_coplot <- function(df, x, y, faceting, number_bins = 6, overlap = 0.5,
-											loess = TRUE, loess_span = 3/4, loess_degree = 1, loess_family = "gaussian",
-											ylabel = quo_text(y), xlabel = quo_text(x), facetlabel = quo_text(faceting),
+											loess = TRUE, loess_span = 3/4,
+											loess_degree = 1, loess_family = "gaussian",
+											ylabel = quo_text(y), xlabel = quo_text(x),
+											facet_label = quo_text(faceting), facet_labeller = NULL,
 											show_intervals = TRUE, intervals_height = 0.25,
 											remove_strip = FALSE, facets_nrow = NULL, hline_at = NULL, ...) {
 
@@ -127,12 +135,38 @@ gg_coplot <- function(df, x, y, faceting, number_bins = 6, overlap = 0.5,
 	if (!is.numeric(eval_tidy(faceting, df)))
 		stop(paste(quo_text(faceting), "provided for the faceting argument is not a numeric variable"))
 
-	res_make_coplot_df <- make_coplot_df(df, !!faceting, number_bins, overlap)
-	data_coplot <- res_make_coplot_df[[1]]
+	unicos <- unique(pull(df, !!faceting))
+	if (number_bins == length(unicos)) {
 
-	g1 <- ggplot(data_coplot, aes(x = !!x, y = !!y)) +
+		# si number_bins es igual a la cantidad de datos unicos, entonces no se generan
+		# intervalos y se usan esos datos unicos como slices (codigo agregado)
+		g1 <- ggplot(df, aes(x = !!x, y = !!y))
+		if (is.null(facet_labeller)) {
+			g1 <- g1 + facet_wrap(vars(!!faceting), nrow = facets_nrow)
+		} else {
+			g1 <- g1 + facet_wrap(vars(!!faceting), nrow = facets_nrow,
+														labeller = labeller(.rows = facet_labeller))
+		}
+
+	} else {
+
+		# Hacer el coplot con slicing (version original)
+		res_make_coplot_df <- make_coplot_df(df, !!faceting, number_bins, overlap)
+		data_coplot <- res_make_coplot_df[[1]]
+		g1 <- ggplot(data_coplot, aes(x = !!x, y = !!y))
+
+		if (is.null(facet_labeller)) {
+			g1 <- g1 + facet_wrap(~ interval, nrow = facets_nrow)
+		} else {
+			g1 <- g1 + facet_wrap(~ interval, nrow = facets_nrow,
+														labeller = labeller(.rows = facet_labeller))
+		}
+
+	}
+
+	# Completar el grafico
+	g1 <- g1 +
 		geom_point(...) +
-		facet_wrap(~ interval, nrow = facets_nrow) +
 		labs(y = ylabel, x = xlabel)
 
 	if (loess) {
@@ -150,15 +184,35 @@ gg_coplot <- function(df, x, y, faceting, number_bins = 6, overlap = 0.5,
 	}
 
 	if (show_intervals) {
-		g2 <-
-			ggplot(res_make_coplot_df[[2]]) +
-				geom_rect(aes(xmin = .data$li, xmax = .data$ls, ymin = .data$n - 0.25, ymax = .data$n + 0.25)) +
-				labs(x = facetlabel) +
-				theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
 
-		egg::ggarrange(g2, g1, heights = c(intervals_height, 1))
+		if (number_bins == length(unicos)) {
+
+			# si number_bins es igual a la cantidad de datos unicos, solo muestro puntitos
+			g2 <- ggplot(NULL, aes(x = unicos, y = 1)) +
+				geom_point(size = 2) +
+				scale_x_continuous(facet_label, breaks = unicos) +
+				theme(
+					axis.text.y = element_blank(),
+					axis.ticks.y = element_blank(),
+					axis.title.y = element_blank(),
+					panel.grid = element_blank()
+				)
+
+		} else {
+
+			# sino los rectangulos
+			g2 <-
+				ggplot(res_make_coplot_df[[2]]) +
+				geom_rect(aes(xmin = .data$li, xmax = .data$ls, ymin = .data$n - 0.25,
+											ymax = .data$n + 0.25)) +
+				labs(x = facet_label) +
+				theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+		}
+		return(egg::ggarrange(g2, g1, heights = c(intervals_height, 1)))
 	} else {
 		return(g1)
 	}
 }
+
+
 
