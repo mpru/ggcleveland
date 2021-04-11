@@ -83,7 +83,8 @@ gg_tmd <- function(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...)
 			geom_point(...) +
 			geom_hline(aes(yintercept = 0), lty = 2) +
 			facet_grid(varY ~ varX) +
-			geom_text(data = dataTexto, mapping = aes(y = 0, x = mean(range(rtdo$media)), label = dataTexto$varX))
+			geom_text(data = dataTexto, mapping = aes(y = 0, x = mean(range(rtdo$media)),
+																								label = .data$varX))
 	}
 	g <- g + xlab(xlabel) + ylab(ylabel)
 	return(g)

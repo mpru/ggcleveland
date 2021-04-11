@@ -115,7 +115,7 @@ gg_quantiles <- function(df, vble, group, combined = FALSE,
 			facet_grid(varY ~ varX) +
 			geom_text(data = dataTexto,
 								mapping = aes(y = mean(range(rtdo$y)), x = mean(range(rtdo$x)),
-															label = dataTexto$varX))
+								  						label = .data$varX))
 	}
 	xlabel <- ifelse(!is.null(xlabel), xlabel,
 									 ifelse(combined, "Quantiles of combined data",
