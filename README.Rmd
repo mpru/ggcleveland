@@ -86,7 +86,7 @@ gg_quantiles(futbol, res, longp, combined = TRUE)
 
 ### gg_tmd
 
-La función `gg_tmd()` produce el gráfico de medias-diferencias de Tukey (Tukey's Mean-Difference Plot):
+Las funciones `gg_tmd()` y `gg_tmd_paired()` producen el gráfico de medias-diferencias de Tukey (Tukey's Mean-Difference Plot):
 
 ```{r}
 # Dos grupos
@@ -94,6 +94,9 @@ gg_tmd(futbol2, dist, longp)
 
 # Múltiples grupos
 gg_tmd(futbol, dist, longp, size = 0.5)
+
+# Datos apareados
+gg_tmd_paired(ozone, stamford, yonkers)
 ```
 
 ### gg_rf
@@ -131,12 +134,35 @@ gg_pt(futbol2, dist, longp, taus = c(-1, -0.5, 0, 0.5))
 La función `gg_coplot()` produce *conditioning plots* o *coplots*, los cuales son una herramienta de visualización útil para estudiar cómo una variable respuesta depende de 2 o más factores. Un **coplot** permite visualizar dependencia condicional.
 
 ```{r}
-data(rubber)
+# Slicing con intervalos solapados
 gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
   number_bins = 6, overlap = 3/4,
   ylabel = "Pérdida de abrasión (g/hp-hour))",
   xlabel = "Resistencia a la tracción (kg/cm2)",
-  facetlabel = "Dureza (grados Shore)", 
+  facet_label = "Dureza (grados Shore)", 
   loess_family = "symmetric", size = 2)
+
+# Slicing con intervalos sin solapamientos, con igual amplitud
+gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
+  number_bins = 6, overlap = 0,
+  ylabel = "Pérdida de abrasión (g/hp-hour))",
+  xlabel = "Resistencia a la tracción (kg/cm2)",
+  facet_label = "Dureza (grados Shore)", 
+  loess = FALSE, size = 2)
+
+# Slicing con intervalos sin solapamientos, con aprox. igual cantidad de datos
+gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
+  number_bins = 6, overlap = 0, equal_length = F,
+  ylabel = "Pérdida de abrasión (g/hp-hour))",
+  xlabel = "Resistencia a la tracción (kg/cm2)",
+  facet_label = "Dureza (grados Shore)", 
+  loess = FALSE, size = 2)
+
+# Slicing con los valores únicos de la variable de faceting
+gg_coplot(galaxy, x = posicion.radial, y = velocidad,
+  faceting = angulo, number_bins = 7, loess_span = .5, loess_degree = 2,
+  facet_labeller = function(x) paste0("Ángulo = ", x, "º"),
+  facet_label = "Ángulo (grado)", facets_nrow = 2, intervals_height = 0.2,
+  xlabel = "Posición radial (arcsec)", ylabel = "Velocidad (km/s)")
 ```
 

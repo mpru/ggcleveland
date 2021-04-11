@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="The gg_coplot function — gg_coplot" />
 <meta property="og:description" content="Implements conditional plots or coplots." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggcleveland</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
       </span>
     </div>
 
@@ -77,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,13 +106,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://twitter.com/mrqtsp">
-    <span class="fa fa-twitter"></span>
+    <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/mpru/ggcleveland">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -127,7 +130,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>The gg_coplot function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mpru/ggcleveland/blob/master/R/coplots.R'><code>R/coplots.R</code></a></small>
+    <small class="dont-index">Source: <a href='http://github.com/mpru/ggcleveland/blob/master/R/gg_coplot.R'><code>R/gg_coplot.R</code></a></small>
     <div class="hidden name"><code>gg_coplot.Rd</code></div>
     </div>
 
@@ -135,27 +138,29 @@
     <p>Implements conditional plots or coplots.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gg_coplot</span>(
-  <span class='no'>df</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='no'>faceting</span>,
-  <span class='kw'>number_bins</span> <span class='kw'>=</span> <span class='fl'>6</span>,
-  <span class='kw'>overlap</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>loess</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>loess_span</span> <span class='kw'>=</span> <span class='fl'>3</span>/<span class='fl'>4</span>,
-  <span class='kw'>loess_degree</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>loess_family</span> <span class='kw'>=</span> <span class='st'>"gaussian"</span>,
-  <span class='kw'>ylabel</span> <span class='kw'>=</span> <span class='fu'>quo_text</span>(<span class='no'>x</span>),
-  <span class='kw'>xlabel</span> <span class='kw'>=</span> <span class='fu'>quo_text</span>(<span class='no'>y</span>),
-  <span class='kw'>facetlabel</span> <span class='kw'>=</span> <span class='fu'>quo_text</span>(<span class='no'>faceting</span>),
-  <span class='kw'>show_intervals</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>intervals_height</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
-  <span class='kw'>remove_strip</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>facets_nrow</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>hline_at</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>gg_coplot</span><span class='op'>(</span>
+  <span class='va'>df</span>,
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  <span class='va'>faceting</span>,
+  number_bins <span class='op'>=</span> <span class='fl'>6</span>,
+  overlap <span class='op'>=</span> <span class='fl'>0.5</span>,
+  equal_length <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  loess <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  loess_span <span class='op'>=</span> <span class='fl'>3</span><span class='op'>/</span><span class='fl'>4</span>,
+  loess_degree <span class='op'>=</span> <span class='fl'>1</span>,
+  loess_family <span class='op'>=</span> <span class='st'>"gaussian"</span>,
+  ylabel <span class='op'>=</span> <span class='fu'>quo_text</span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>,
+  xlabel <span class='op'>=</span> <span class='fu'>quo_text</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  facet_label <span class='op'>=</span> <span class='fu'>quo_text</span><span class='op'>(</span><span class='va'>faceting</span><span class='op'>)</span>,
+  facet_labeller <span class='op'>=</span> <span class='cn'>NULL</span>,
+  show_intervals <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  intervals_height <span class='op'>=</span> <span class='fl'>0.25</span>,
+  remove_strip <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  facets_nrow <span class='op'>=</span> <span class='cn'>NULL</span>,
+  hline_at <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,6 +191,12 @@
 variables</p></td>
     </tr>
     <tr>
+      <th>equal_length</th>
+      <td><p>if `overlap = 0` non overlaping intervals are produced
+all with same length if `equal_length` is `TRUE` (default) or with the same
+number of values otherwise.</p></td>
+    </tr>
+    <tr>
       <th>loess</th>
       <td><p>logical; should a loess smoothing curve be added to the coplots?
 Defaults to TRUE.</p></td>
@@ -211,8 +222,14 @@ Defaults to TRUE.</p></td>
       <td><p>label for x-axis</p></td>
     </tr>
     <tr>
-      <th>facetlabel</th>
+      <th>facet_label</th>
       <td><p>label for faceting variable</p></td>
+    </tr>
+    <tr>
+      <th>facet_labeller</th>
+      <td><p>defaults to NULL so facet labels are automatically
+produced, but can take a fuction to be used in `facet_wrap(~faceting,
+labeller = labeller(faceting = facet_labeler))`</p></td>
     </tr>
     <tr>
       <th>show_intervals</th>
@@ -247,24 +264,41 @@ heigth</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a coplot</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If the number of bins is equal to the number of unique values in the
+  faceting variable, then no overlaping intervals are produced and each value
+  in the faceting variable is used as a slice (`frac` is ingored).</p>
+<p>If `overlap = 0` then `ggplot2::cut_interval` is used to generate
+  the intervals if `equal_length = TRUE` (default), otherwise
+  `ggplot2::cut_number` is used. If `overlap` is not zero,
+  `graphics::co.interval` is called.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rubber</span>)
-<span class='fu'>gg_coplot</span>(<span class='no'>rubber</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>tensile.strength</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>abrasion.loss</span>, <span class='kw'>faceting</span> <span class='kw'>=</span> <span class='no'>hardness</span>,
-  <span class='kw'>number_bins</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>overlap</span> <span class='kw'>=</span> <span class='fl'>3</span>/<span class='fl'>4</span>,
-  <span class='kw'>ylabel</span> <span class='kw'>=</span> <span class='st'>"Pérdida de abrasión (g/hp-hour))"</span>,
-  <span class='kw'>xlabel</span> <span class='kw'>=</span> <span class='st'>"Resistencia a la tracción (kg/cm2)"</span>,
-  <span class='kw'>facetlabel</span> <span class='kw'>=</span> <span class='st'>"Dureza (grados Shore)"</span>, <span class='kw'>loess_family</span> <span class='kw'>=</span> <span class='st'>"symmetric"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='gg_coplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>gg_coplot</span><span class='op'>(</span><span class='va'>rubber</span>, x <span class='op'>=</span> <span class='va'>tensile.strength</span>, y <span class='op'>=</span> <span class='va'>abrasion.loss</span>, faceting <span class='op'>=</span> <span class='va'>hardness</span>,
+  number_bins <span class='op'>=</span> <span class='fl'>6</span>, overlap <span class='op'>=</span> <span class='fl'>3</span><span class='op'>/</span><span class='fl'>4</span>,
+  ylabel <span class='op'>=</span> <span class='st'>"Pérdida de abrasión (g/hp-hour))"</span>,
+  xlabel <span class='op'>=</span> <span class='st'>"Resistencia a la tracción (kg/cm2)"</span>,
+  facet_label <span class='op'>=</span> <span class='st'>"Dureza (grados Shore)"</span>, loess_family <span class='op'>=</span> <span class='st'>"symmetric"</span>, size <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>`geom_smooth()` using formula 'y ~ x'</span></div><div class='img'><img src='gg_coplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>gg_coplot</span><span class='op'>(</span><span class='va'>galaxy</span>, x <span class='op'>=</span> <span class='va'>posicion.radial</span>, y <span class='op'>=</span> <span class='va'>velocidad</span>,
+  faceting <span class='op'>=</span> <span class='va'>angulo</span>, number_bins <span class='op'>=</span> <span class='fl'>7</span>, loess_span <span class='op'>=</span> <span class='fl'>.5</span>, loess_degree <span class='op'>=</span> <span class='fl'>2</span>,
+  facet_labeller <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"Ángulo = "</span>, <span class='va'>x</span>, <span class='st'>"º"</span><span class='op'>)</span>,
+  facet_label <span class='op'>=</span> <span class='st'>"Ángulo (grado)"</span>, facets_nrow <span class='op'>=</span> <span class='fl'>2</span>, intervals_height <span class='op'>=</span> <span class='fl'>0.2</span>,
+  xlabel <span class='op'>=</span> <span class='st'>"Posición radial (arcsec)"</span>, ylabel <span class='op'>=</span> <span class='st'>"Velocidad (km/s)"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>`geom_smooth()` using formula 'y ~ x'</span></div><div class='img'><img src='gg_coplot-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>gg_coplot</span><span class='op'>(</span><span class='va'>galaxy</span>, x <span class='op'>=</span> <span class='va'>este.oeste</span>, y <span class='op'>=</span> <span class='va'>norte.sur</span>, faceting <span class='op'>=</span> <span class='va'>velocidad</span>,
+  number_bins <span class='op'>=</span> <span class='fl'>25</span>, overlap <span class='op'>=</span> <span class='fl'>0</span>,  size <span class='op'>=</span> <span class='fl'>0.5</span>,
+  ylabel <span class='op'>=</span> <span class='st'>"Coordenada sur-norte jittered (arcsec)"</span>,
+  xlabel <span class='op'>=</span> <span class='st'>"Coordenada este-oeste jittered (arcsec)"</span>,
+  facet_label <span class='op'>=</span> <span class='st'>"Velocidad (km/s)"</span>, facets_nrow <span class='op'>=</span> <span class='fl'>5</span>,
+  remove_strip <span class='op'>=</span> <span class='cn'>TRUE</span>, intervals_height <span class='op'>=</span> <span class='fl'>0.15</span>, loess <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='img'><img src='gg_coplot-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -275,7 +309,7 @@ heigth</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

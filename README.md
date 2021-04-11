@@ -1,11 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-|||||| **Work in progress** |||||| **En construcción** ||||||
+\|\|\|\|\|\| **Work in progress** \|\|\|\|\|\| **En construcción**
+\|\|\|\|\|\|
 
 # The ggcleveland R package
 
-|||||| **Work in progress** |||||| **En construcción** ||||||
+\|\|\|\|\|\| **Work in progress** \|\|\|\|\|\| **En construcción**
+\|\|\|\|\|\|
 
 <!-- badges: start -->
 
@@ -20,10 +22,10 @@ Web: <https://mpru.github.io/ggcleveland/>
 
 Este paquete implementa algunas funciones para crear las versiones en
 `ggplot2` de algunos gráficos presentados por Cleveland en su libro
-“Visualizing Data”. Ha sido creado para ser usado en cursos de
-Análisis Exploratorio de Datos. Se encuentra en desarrollo y aún no ha
-sido usado con diversos conjuntos de datos. Cualquier comentario o
-sugerencia es bienvenida.
+“Visualizing Data”. Ha sido creado para ser usado en cursos de Análisis
+Exploratorio de Datos. Se encuentra en desarrollo y aún no ha sido usado
+con diversos conjuntos de datos. Cualquier comentario o sugerencia es
+bienvenida.
 
 This package provides functions to produce ggplot versions for some
 visualizations tools described in Cleveland’s book “Visualizing Data”.
@@ -81,10 +83,10 @@ gg_quantiles(futbol2, dist, longp)
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" />
 
 ``` r
-
 # Más de dos grupos
 gg_quantiles(futbol, dist, longp, size = 0.4, color = "red", shape = 3) +
     labs(title = "Gráficos QQ de a pares", x = "Distancia (m)", y = "Distancia (m)")
+#> Warning: Use of `dataTexto$varX` is discouraged. Use `varX` instead.
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-2.png" width="70%" style="display: block; margin: auto;" />
@@ -106,8 +108,8 @@ gg_quantiles(futbol, res, longp, combined = TRUE)
 
 ### gg\_tmd
 
-La función `gg_tmd()` produce el gráfico de medias-diferencias de Tukey
-(Tukey’s Mean-Difference Plot):
+Las funciones `gg_tmd()` y `gg_tmd_paired()` producen el gráfico de
+medias-diferencias de Tukey (Tukey’s Mean-Difference Plot):
 
 ``` r
 # Dos grupos
@@ -117,18 +119,25 @@ gg_tmd(futbol2, dist, longp)
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
 
 ``` r
-
 # Múltiples grupos
 gg_tmd(futbol, dist, longp, size = 0.5)
+#> Warning: Use of `dataTexto$varX` is discouraged. Use `varX` instead.
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-2.png" width="70%" style="display: block; margin: auto;" />
 
+``` r
+# Datos apareados
+gg_tmd_paired(ozone, stamford, yonkers)
+#> `geom_smooth()` using formula 'y ~ x'
+```
+
+<img src="man/figures/README-unnamed-chunk-4-3.png" width="70%" style="display: block; margin: auto;" />
+
 ### gg\_rf
 
 La función `gg_rf()` produce un *residual-fit plot* (gráfico de residuos
-y valores
-ajustados):
+y valores ajustados):
 
 ``` r
 gg_rf(futbol, dist, ajuste, res, ylabel = "Distancia (m)")
@@ -137,7 +146,6 @@ gg_rf(futbol, dist, ajuste, res, ylabel = "Distancia (m)")
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
 
 ``` r
-
 # Agregando las observaciones centradas por la media general
 gg_rf(futbol, dist, ajuste, res, cen_obs = TRUE, ylabel = "Distancia (m)")
 ```
@@ -146,8 +154,7 @@ gg_rf(futbol, dist, ajuste, res, cen_obs = TRUE, ylabel = "Distancia (m)")
 
 ### gg\_sl
 
-La función `gg_sl()` produce un *spread-location
-plot*:
+La función `gg_sl()` produce un *spread-location plot*:
 
 ``` r
 gg_sl(futbol2, dist, longp, xlabel = "Mediana de distancia jittered (m)")
@@ -160,8 +167,7 @@ gg_sl(futbol2, dist, longp, xlabel = "Mediana de distancia jittered (m)")
 La función `gg_pt()` produce un gráfico para evaluar transformaciones de
 potencia, que consisten en elevar a las observaciones a un conjunto de
 potencias señaladas en el argumento `taus`, en el cual el valor 0 indica
-la transformación
-logarítmica:
+la transformación logarítmica:
 
 ``` r
 gg_pt(futbol2, dist, taus = c(-1, -0.5, 0, 0.5))
@@ -170,7 +176,6 @@ gg_pt(futbol2, dist, taus = c(-1, -0.5, 0, 0.5))
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
 
 ``` r
-
 # Para cada grupo por separado
 gg_pt(futbol2, dist, longp, taus = c(-1, -0.5, 0, 0.5))
 ```
@@ -185,13 +190,50 @@ variable respuesta depende de 2 o más factores. Un **coplot** permite
 visualizar dependencia condicional.
 
 ``` r
-data(rubber)
+# Slicing con intervalos solapados
 gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
   number_bins = 6, overlap = 3/4,
   ylabel = "Pérdida de abrasión (g/hp-hour))",
   xlabel = "Resistencia a la tracción (kg/cm2)",
-  facetlabel = "Dureza (grados Shore)", 
+  facet_label = "Dureza (grados Shore)", 
   loess_family = "symmetric", size = 2)
+#> `geom_smooth()` using formula 'y ~ x'
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+
+``` r
+# Slicing con intervalos sin solapamientos, con igual amplitud
+gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
+  number_bins = 6, overlap = 0,
+  ylabel = "Pérdida de abrasión (g/hp-hour))",
+  xlabel = "Resistencia a la tracción (kg/cm2)",
+  facet_label = "Dureza (grados Shore)", 
+  loess = FALSE, size = 2)
+```
+
+<img src="man/figures/README-unnamed-chunk-8-2.png" width="70%" style="display: block; margin: auto;" />
+
+``` r
+# Slicing con intervalos sin solapamientos, con aprox. igual cantidad de datos
+gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
+  number_bins = 6, overlap = 0, equal_length = F,
+  ylabel = "Pérdida de abrasión (g/hp-hour))",
+  xlabel = "Resistencia a la tracción (kg/cm2)",
+  facet_label = "Dureza (grados Shore)", 
+  loess = FALSE, size = 2)
+```
+
+<img src="man/figures/README-unnamed-chunk-8-3.png" width="70%" style="display: block; margin: auto;" />
+
+``` r
+# Slicing con los valores únicos de la variable de faceting
+gg_coplot(galaxy, x = posicion.radial, y = velocidad,
+  faceting = angulo, number_bins = 7, loess_span = .5, loess_degree = 2,
+  facet_labeller = function(x) paste0("Ángulo = ", x, "º"),
+  facet_label = "Ángulo (grado)", facets_nrow = 2, intervals_height = 0.2,
+  xlabel = "Posición radial (arcsec)", ylabel = "Velocidad (km/s)")
+#> `geom_smooth()` using formula 'y ~ x'
+```
+
+<img src="man/figures/README-unnamed-chunk-8-4.png" width="70%" style="display: block; margin: auto;" />
