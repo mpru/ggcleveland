@@ -7,23 +7,24 @@
 #' @param vble faceting numeric variable
 #' @param number_bins integer; the number of conditioning intervals
 #' @param overlap numeric < 1; the fraction of overlap of the conditioning variables
+#' @param equal_length if `overlap = 0` non overlaping intervals are produced
+#'   all with same length if `equal_length` is `TRUE` (default) or with the same
+#'   number of values otherwise.
 #'
 #' @return a dataset to be used in the creation of coplots
 #' @details Adapted from \href{https://jfukuyama.github.io/teaching/stat670/notes/lecture-11.html}{here}.
 #' @export
 #'
+#' @details If `overlap = 0` then `ggplot2::cut_interval` is used to generate
+#'   the intervals if `equal_length = TRUE` (default), otherwise
+#'   `ggplot2::cut_number` is used. If `overlap` is not zero,
+#'   `graphics::co.interval` is called.
+#'
 #' @examples
-#' data(rubber)
 #' data_coplot <- make_coplot_df(rubber, hardness, 6, 3/4)
-make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
+make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5, equal_length = TRUE) {
 
-	# Obs: con overlap = 0 co.intervals a veces genera algo de superposicion de
-	# todos modos. Si quiero evitar esto debería hacer algún cambio, tal vez usando
-	# cut_number de ggplot2. `ggplot2` trae algunas funciones que son útiles para
-	# agrupar datos en intervalos, como `cut_interval()`, `cut_number()`,
-	# `cut_width()`.
-
-	# NSE y controles
+		# NSE y controles
 	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
 	vble <- enquo(vble)
 	if (!is.numeric(eval_tidy(vble, df)))
@@ -31,34 +32,74 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 
 	values <- pull(df, !!vble)
 
-	## co.intervals gets the limits used for the conditioning intervals
-	intervals = graphics::co.intervals(values, number = number_bins, overlap = overlap)
-	## indices is a list, with the ith element containing the indices of the
-	## observations falling into the ith interval
-	indices = indices = lapply(split(intervals, seq(nrow(intervals))),
-														 function(x) which(values <= x[2] & values >= x[1]))
-	## interval_descriptions is formatted like indices, but has interval
-	## names instead of indices of the samples falling in the index
-	interval_descriptions = apply(intervals, 1, function(x) {
-		num_in_interval = sum(values <= x[2] & values >= x[1])
-		interval_description = sprintf("[%.2f, %.2f]", x[1], x[2])
-		return(rep(interval_description, num_in_interval))
-	})
-	## df_expanded has all the points we need for each interval, and the
-	## 'interval' column tells us which part of the coplot the point should
-	## be plotted in
-	df_expanded = df[unlist(indices),]
-	df_expanded$interval = factor(unlist(interval_descriptions),
-																levels = unique(unlist(interval_descriptions)),
-																labels = paste(quo_text(vble), "=", unique(unlist(interval_descriptions))),
-																ordered = TRUE)
-	# df_expanded <-
-	# 	df_expanded %>%
-	# 	separate(interval, c("li", "ls"), sep = ",") %>%
-	# 	mutate(n = dplyr::row_number(), li = readr::parse_number(.data$li), ls = readr::parse_number(.data$ls)) %>%
+	if (overlap == 0) {
+		# Obs: con overlap = 0 co.intervals a veces genera algo de superposicion de
+		# todos modos. Si quiero evitar esto debería hacer algún cambio, tal vez
+		# usando cut_number de ggplot2. `ggplot2` trae algunas funciones que son
+		# útiles para agrupar datos en intervalos, como `cut_interval()`,
+		# `cut_number()`, `cut_width()`. cut_number() makes n groups with
+		# (approximately) equal numbers of observations;
+		# Nueva obs: no sé por qué aclaré lo anterior, no  veo que co.intervals genere
+		# superposición si overlap = 0, pero el tema es que lo que devuelve es el
+		# rango dentro de cada intervalo, o sea no te da puntos de cortes, no quedan
+		# intervalos continuos, te da por ejemplo "0.3-0.7", "1.2-1.9" en lugar de
+		# "0-1", "1-2". Por eso uso cut_number que sí te lo da, asi puedo representar
+		# de forma continua los intervalos, pero el coplot en sí quedaría igual
 
+		if (equal_length) {
+			# non overlaping intervals have same length
+			cut_values <- ggplot2::cut_interval(values, number_bins)
+		} else {
+			# non overlaping intervals have same number of points
+			cut_values <- ggplot2::cut_number(values, number_bins)
+		}
+
+		# usar dig.lab = 6 o lo que sea necesario dentro de cut_number si se quieren
+		# ver mas decimales en la definicion de los intervalos
+
+		intervals <-
+			cut_values %>%
+			levels() %>%
+			stringr::str_split(",") %>%
+			unlist() %>%
+			readr::parse_number() %>%
+			matrix(ncol = 2, byrow = T)
+
+		# le agrego el nombre de la variable para generar etiquetas
+		levels(cut_values) <- paste(quo_text(vble), "=", levels(cut_values))
+		df_expanded <- mutate(df, interval = cut_values)
+
+	} else {
+
+		# Acá sí uso co.intervals
+		## co.intervals gets the limits used for the conditioning intervals
+		intervals <- graphics::co.intervals(values, number = number_bins, overlap = overlap)
+		## indices is a list, with the ith element containing the indices of the
+		## observations falling into the ith interval
+		indices <- lapply(split(intervals, seq(nrow(intervals))),
+											function(x) which(values <= x[2] & values >= x[1]))
+		## interval_descriptions is formatted like indices, but has interval
+		## names instead of indices of the samples falling in the index
+		interval_descriptions <- apply(intervals, 1, function(x) {
+			num_in_interval <- sum(values <= x[2] & values >= x[1])
+			interval_description <- sprintf("[%.2f, %.2f]", x[1], x[2])
+			return(rep(interval_description, num_in_interval))
+		})
+		## df_expanded has all the points we need for each interval, and the
+		## 'interval' column tells us which part of the coplot the point should
+		## be plotted in
+		df_expanded = df[unlist(indices),]
+		df_expanded$interval = factor(unlist(interval_descriptions),
+																	levels = unique(unlist(interval_descriptions)),
+																	labels = paste(quo_text(vble), "=",
+																								 unique(unlist(interval_descriptions))),
+																	ordered = TRUE)
+		# df_expanded <-
+		# 	df_expanded %>%
+		# 	separate(interval, c("li", "ls"), sep = ",") %>%
+		# 	mutate(n = dplyr::row_number(), li = readr::parse_number(.data$li), ls = readr::parse_number(.data$ls)) %>%
+	}
 	intervals <- tibble(n = 1:nrow(intervals), li = intervals[, 1], ls = intervals[, 2])
-
 	return(list(df_expanded = df_expanded, intervals = intervals))
 }
 
@@ -73,6 +114,9 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 #' @param number_bins integer; the number of conditioning intervals
 #' @param overlap numeric < 1; the fraction of overlap of the conditioning
 #'   variables
+#' @param equal_length if `overlap = 0` non overlaping intervals are produced
+#'   all with same length if `equal_length` is `TRUE` (default) or with the same
+#'   number of values otherwise.
 #' @param loess logical; should a loess smoothing curve be added to the coplots?
 #'   Defaults to TRUE.
 #' @param loess_span span parameter for loess
@@ -98,30 +142,40 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5) {
 #' @return a coplot
 #' @details If the number of bins is equal to the number of unique values in the
 #'   faceting variable, then no overlaping intervals are produced and each value
-#'   in the faceting variable is used as a slice.
+#'   in the faceting variable is used as a slice (`frac` is ingored).
+#'
+#'   If `overlap = 0` then `ggplot2::cut_interval` is used to generate
+#'   the intervals if `equal_length = TRUE` (default), otherwise
+#'   `ggplot2::cut_number` is used. If `overlap` is not zero,
+#'   `graphics::co.interval` is called.
 #' @export
 #'
 #' @examples
-#' data(rubber)
 #' gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
 #'   number_bins = 6, overlap = 3/4,
 #'   ylabel = "Pérdida de abrasión (g/hp-hour))",
 #'   xlabel = "Resistencia a la tracción (kg/cm2)",
 #'   facet_label = "Dureza (grados Shore)", loess_family = "symmetric", size = 2)
 #'
+#' gg_coplot(galaxy, x = posicion.radial, y = velocidad,
+#'   faceting = angulo, number_bins = 7, loess_span = .5, loess_degree = 2,
+#'   facet_labeller = function(x) paste0("Ángulo = ", x, "º"),
+#'   facet_label = "Ángulo (grado)", facets_nrow = 2, intervals_height = 0.2,
+#'   xlabel = "Posición radial (arcsec)", ylabel = "Velocidad (km/s)")
+#'
+#' gg_coplot(galaxy, x = este.oeste, y = norte.sur, faceting = velocidad,
+#'   number_bins = 25, overlap = 0,  size = 0.5,
+#'   ylabel = "Coordenada sur-norte jittered (arcsec)",
+#'   xlabel = "Coordenada este-oeste jittered (arcsec)",
+#'   facet_label = "Velocidad (km/s)", facets_nrow = 5,
+#'   remove_strip = TRUE, intervals_height = 0.15, loess = FALSE)
 gg_coplot <- function(df, x, y, faceting, number_bins = 6, overlap = 0.5,
-											loess = TRUE, loess_span = 3/4,
+											equal_length = TRUE, loess = TRUE, loess_span = 3/4,
 											loess_degree = 1, loess_family = "gaussian",
 											ylabel = quo_text(y), xlabel = quo_text(x),
 											facet_label = quo_text(faceting), facet_labeller = NULL,
 											show_intervals = TRUE, intervals_height = 0.25,
 											remove_strip = FALSE, facets_nrow = NULL, hline_at = NULL, ...) {
-
-	# Obs: con overlap = 0 co.intervals a veces genera algo de superposicion de
-	# todos modos. Si quiero evitar esto debería hacer algún cambio, tal vez usando
-	# cut_number de ggplot2. `ggplot2` trae algunas funciones que son útiles para
-	# agrupar datos en intervalos, como `cut_interval()`, `cut_number()`,
-	# `cut_width()`.
 
 	# NSE y controles
 	if (!is.data.frame(df)) stop("The object provided in the argument df is not a data.frame")
@@ -151,7 +205,7 @@ gg_coplot <- function(df, x, y, faceting, number_bins = 6, overlap = 0.5,
 	} else {
 
 		# Hacer el coplot con slicing (version original)
-		res_make_coplot_df <- make_coplot_df(df, !!faceting, number_bins, overlap)
+		res_make_coplot_df <- make_coplot_df(df, !!faceting, number_bins, overlap, equal_length)
 		data_coplot <- res_make_coplot_df[[1]]
 		g1 <- ggplot(data_coplot, aes(x = !!x, y = !!y))
 
