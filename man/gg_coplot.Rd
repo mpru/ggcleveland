@@ -98,12 +98,14 @@ If the number of bins is equal to the number of unique values in the
   `graphics::co.interval` is called.
 }
 \examples{
+# Slicing con intervalos solapados
 gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
   number_bins = 6, overlap = 3/4,
   ylabel = "Pérdida de abrasión (g/hp-hour))",
   xlabel = "Resistencia a la tracción (kg/cm2)",
   facet_label = "Dureza (grados Shore)", loess_family = "symmetric", size = 2)
 
+# Slicing con los valores únicos de la variable de faceting
 gg_coplot(galaxy, x = posicion.radial, y = velocidad,
   faceting = angulo, number_bins = 7, loess_span = .5, loess_degree = 2,
   facet_labeller = function(x) paste0("Ángulo = ", x, "º"),
