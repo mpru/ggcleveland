@@ -1,3 +1,12 @@
+# ggcleveland 0.1.0
+
+This is the first submission to CRAN. It includes:
+
+* Updated DESCRIPTION, README and documentation.
+* Updated website.
+* Updated vignettes.
+* Fixed order of panels in gg_pt().
+
 # ggcleveland 0.0.1.9000
 
 * Solved two bugs related to axis labeling.
@@ -7,4 +16,4 @@
 
 # ggcleveland 0.0.0.9000
 
-* This is the development version of ggcleveland.
+* This is the first development version of ggcleveland.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_coplot.R
 \name{make_coplot_df}
 \alias{make_coplot_df}
-\title{The make_coplot_df function}
+\title{Creation of tibbles por coplots}
 \usage{
 make_coplot_df(df, vble, number_bins = 6, overlap = 0.5, equal_length = TRUE)
 }

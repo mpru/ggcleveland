@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggcleveland</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -79,27 +79,18 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/ggplot-cleveland.html">Gráficos de Cleveland en versión ggplot2</a>
-    </li>
-  </ul>
+  <a href="../articles/ggplot-cleveland.html">Artículos / Articles</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Referencias / References</a>
+</li>
+<li>
+  <a href="../news/index.html">Novedades / News</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -142,8 +133,69 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-gr-ficos-plots" class="hasAnchor"><a href="#section-gr-ficos-plots" class="anchor"></a>Gráficos / Plots</h2>
+          <p class="section-desc">
+<p>Este conjunto de funciones implementan los gráficos en ggplot2 (notar que en este paquete no se crean nuevos stats o layers, pero sí se pueden agregar capas sobre el objeto ggplot retornado).</p>
+<p>This set of functions produce the ggplot2 version of the plots (note that this package does not create any new stats or geom layers, but they can added on top of the returned ggplot objects).</p>
+</p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="gg_coplot.html">gg_coplot()</a></code> </p>
+        </td>
+        <td><p>Conditional plots</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gg_pt.html">gg_pt()</a></code> </p>
+        </td>
+        <td><p>Plots for power transformations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gg_quantiles.html">gg_quantiles()</a></code> </p>
+        </td>
+        <td><p>Quantile-Quantile plots</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gg_rf.html">gg_rf()</a></code> </p>
+        </td>
+        <td><p>Residual-Fit plot</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gg_sl.html">gg_sl()</a></code> </p>
+        </td>
+        <td><p>Spread-Location plot</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gg_tmd.html">gg_tmd()</a></code> </p>
+        </td>
+        <td><p>Tukey's Mean-Difference plot for one-way data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gg_tmd_paired.html">gg_tmd_paired()</a></code> </p>
+        </td>
+        <td><p>The gg_tmd_paired function</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-datos-datasets" class="hasAnchor"><a href="#section-datos-datasets" class="anchor"></a>Datos / Datasets</h2>
+          <p class="section-desc">
+<p>Conjuntos de datos en formato tibble.</p>
+<p>Datasets presented as tibbles.</p>
+</p>
         </th>
       </tr>
       
@@ -169,12 +221,6 @@
           <p><code><a href="environmental.html">environmental</a></code> </p>
         </td>
         <td><p>Dataset environmental</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="equal_count.html">equal_count()</a></code> </p>
-        </td>
-        <td><p>The equal_count function</p></td>
       </tr><tr>
         
         <td>
@@ -220,54 +266,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="gg_coplot.html">gg_coplot()</a></code> </p>
-        </td>
-        <td><p>The gg_coplot function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gg_pt.html">gg_pt()</a></code> </p>
-        </td>
-        <td><p>The gg_pt function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gg_quantiles.html">gg_quantiles()</a></code> </p>
-        </td>
-        <td><p>The gg_quantiles function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gg_rf.html">gg_rf()</a></code> </p>
-        </td>
-        <td><p>The gg_rf function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gg_sl.html">gg_sl()</a></code> </p>
-        </td>
-        <td><p>The gg_sl function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gg_tmd.html">gg_tmd()</a></code> </p>
-        </td>
-        <td><p>The gg_tmd function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gg_tmd_paired.html">gg_tmd_paired()</a></code> </p>
-        </td>
-        <td><p>The gg_tmd_paired function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_coplot_df.html">make_coplot_df()</a></code> </p>
-        </td>
-        <td><p>The make_coplot_df function</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="ozone.html">ozone</a></code> </p>
         </td>
         <td><p>Dataset ozone</p></td>
@@ -289,6 +287,34 @@
           <p><code><a href="rubber.html">rubber</a></code> </p>
         </td>
         <td><p>Dataset rubber</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-otras-funciones-other-functions" class="hasAnchor"><a href="#section-otras-funciones-other-functions" class="anchor"></a>Otras funciones / Other functions</h2>
+          <p class="section-desc">
+<p>Funciones auxiliares para la construcción de los gráficos.</p>
+<p>Helper functions.</p>
+</p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="equal_count.html">equal_count()</a></code> </p>
+        </td>
+        <td><p>The equal count algorithm</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="make_coplot_df.html">make_coplot_df()</a></code> </p>
+        </td>
+        <td><p>Creation of tibbles por coplots</p></td>
       </tr>
     </tbody>
     </table>

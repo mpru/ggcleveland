@@ -1,4 +1,4 @@
-#' The gg_tmd function
+#' Tukey's Mean-Difference plot for one-way data
 #'
 #' Returns Tukey's Mean-Difference plot for one-way data
 #'
@@ -13,14 +13,17 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr)
 #' data(futbol)
+#'
 #' # Multiple groups
 #' gg_tmd(futbol, dist, longp)
 #' gg_tmd(futbol, dist, longp, size = 0.4, color = "red", shape = 3)
 #'
-#' # Only 2 grupos
-#' futbol2 <- dplyr::filter(futbol, longp %in% c("< 0.81 m", "0.81 a 0.90 m"))
-#' gg_tmd(futbol2, dist, longp)
+#' # Only 2 groups
+#' futbol %>%
+#'   filter(longp %in% c("< 0.81 m", "0.81 a 0.90 m")) %>%
+#'   gg_tmd(dist, longp)
 gg_tmd <- function(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...) {
 
 	# NSE y controles
@@ -106,7 +109,7 @@ gg_tmd <- function(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...)
 #' @param ylabel label for y-axis, defaults to "Difference"
 #' @param ... parameters to be passed to geom_point(), such as size, color, shape.
 #'
-#' @details Differences are computed as `vble1 - vble2`
+#' @details Differences are computed as `vble1 - vble2`.
 #' @return a ggplot
 #' @export
 #'

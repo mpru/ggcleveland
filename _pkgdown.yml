@@ -3,8 +3,75 @@ template:
     bootswatch: united
 
 navbar:
+  title: "ggcleveland"
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "Artículos / Articles"
+      href: articles/ggplot-cleveland.html
+    - text: "Referencias / References"
+      href: reference/index.html
+    - text: "Novedades / News"
+      href: news/index.html
   right:
    - icon: fa-twitter
      href: https://twitter.com/mrqtsp
    - icon: fa-github
      href: https://github.com/mpru/ggcleveland
+
+home:
+  links:
+  - text: "Mira el código/Browse source code"
+    href: https://github.com/mpru/ggcleveland
+  - text: "Reporta un problema/Report a bug"
+    href: https://github.com/mpru/ggcleveland/issues
+
+reference:
+  - title: "Gráficos / Plots"
+    desc: >
+      Este conjunto de funciones implementan los gráficos en ggplot2 (notar que
+      en este paquete no se crean nuevos stats o layers, pero sí se pueden
+      agregar capas sobre el objeto ggplot retornado).
+
+
+      This set of functions produce the ggplot2 version of the plots (note that
+      this package does not create any new stats or geom layers, but they can
+      added on top of the returned ggplot objects).
+    contents:
+      - gg_coplot
+      - gg_pt
+      - gg_quantiles
+      - gg_rf
+      - gg_sl
+      - gg_tmd
+      - gg_tmd_paired
+  - title: "Datos / Datasets"
+    desc: >
+      Conjuntos de datos en formato tibble.
+
+
+      Datasets presented as tibbles.
+    contents:
+      - bin
+      - dating
+      - environmental
+      - etanol
+      - fly
+      - food
+      - fusion
+      - futbol
+      - galaxy
+      - ganglion
+      - ozone
+      - playfair
+      - polarization
+      - rubber
+  - title: "Otras funciones / Other functions"
+    desc: >
+      Funciones auxiliares para la construcción de los gráficos.
+
+
+      Helper functions.
+    contents:
+      - equal_count
+      - make_coplot_df

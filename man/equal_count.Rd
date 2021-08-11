@@ -2,7 +2,7 @@
 % Please edit documentation in R/equal_count.R
 \name{equal_count}
 \alias{equal_count}
-\title{The equal_count function}
+\title{The equal count algorithm}
 \usage{
 equal_count(df, vble, n_int = 6, frac = 0.5)
 }

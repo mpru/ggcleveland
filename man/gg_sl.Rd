@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_sl.R
 \name{gg_sl}
 \alias{gg_sl}
-\title{The gg_sl function}
+\title{Spread-Location plot}
 \usage{
 gg_sl(
   df,
@@ -11,7 +11,7 @@ gg_sl(
   jitterwidth = 0.1,
   jitteralpha = 0.5,
   linecol = "red",
-  ylabel = expression(sqrt(abs(" Residuos "))),
+  ylabel = expression(sqrt(abs(" Residuals "))),
   xlabel = "Medians"
 )
 }
@@ -39,10 +39,13 @@ a ggplot object with the spread-location plot
 Returns a spread-location plot.
 }
 \examples{
-data(fusion)
+library(ggplot2)
+
 gg_sl(fusion, time, nv.vv)
+
 gg_sl(fusion, time, nv.vv, jitterwidth = 0.4, linecol = "blue",
-      ylabel = "hola", jitteralpha = 1) +
-      ggplot2::scale_color_discrete("Grupo")
+      jitteralpha = 1) +
+  scale_color_discrete("Grupo") +
+  xlim(2, 8)
 
 }

@@ -1,4 +1,4 @@
-#' The gg_rf function
+#' Residual-Fit plot
 #'
 #' Returns a Residual-Fit plot, optionally including centered observed values
 #'
@@ -22,11 +22,18 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr)
+#' data(futbol)
 #'
-#' datos <- dplyr::group_by(futbol, longp)
-#' datos <- dplyr::mutate(datos, ajuste = mean(dist), res = dist - ajuste)
+#' datos <-
+#'   futbol %>%
+#'   group_by(longp) %>%
+#'   mutate(ajuste = mean(dist), res = dist - ajuste)
+#'
 #' gg_rf(datos, dist, ajuste, res)
+#'
 #' gg_rf(datos, dist, ajuste, res, cen_obs = TRUE)
+#'
 #' gg_rf(datos, dist, ajuste, res, cen_obs = TRUE,
 #'       cen_obs_label = "Obs centradas", cen_fit_label = "Ajustados menos media",
 #'       res_label = "Residuos", xlabel = "valor f", ylabel = "Distancia (m)",

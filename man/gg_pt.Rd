@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_pt.R
 \name{gg_pt}
 \alias{gg_pt}
-\title{The gg_pt function}
+\title{Plots for power transformations}
 \usage{
 gg_pt(
   df,
@@ -43,14 +43,20 @@ groups in the data, transformations can be applied separately to each of
 them.
 }
 \examples{
+library(dplyr)
+
 # Without groups
-data(fusion)
-gg_pt(dplyr::filter(fusion, nv.vv == "VV"), time)
-gg_pt(dplyr::filter(fusion, nv.vv == "VV"), time, taus = c(-0.25, -0.5, -1, 0),
-      xlabel = "Cuantiles normales", ylabel = "Valores transformados",
-      nrow = 3, color = "red")
+fusion \%>\%
+  filter(nv.vv == "VV") \%>\%
+  gg_pt(time)
+
+fusion \%>\%
+  filter(nv.vv == "VV") \%>\%
+  gg_pt(time, taus = c(-0.25, -0.5, -1, 0),
+        xlabel = "Cuantiles normales", ylabel = "Valores transformados",
+        nrow = 3, color = "red")
 
 # With groups
-gg_pt(fusion, time, nv.vv)
+gg_pt(fusion, time, nv.vv, taus = c(-0.5, -0.25, 0, 0.25, 0.5))
 
 }

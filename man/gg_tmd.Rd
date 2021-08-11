@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_tmd.R
 \name{gg_tmd}
 \alias{gg_tmd}
-\title{The gg_tmd function}
+\title{Tukey's Mean-Difference plot for one-way data}
 \usage{
 gg_tmd(df, vble, group, xlabel = "Mean", ylabel = "Difference", ...)
 }
@@ -26,12 +26,15 @@ a ggplot
 Returns Tukey's Mean-Difference plot for one-way data
 }
 \examples{
+library(dplyr)
 data(futbol)
+
 # Multiple groups
 gg_tmd(futbol, dist, longp)
 gg_tmd(futbol, dist, longp, size = 0.4, color = "red", shape = 3)
 
-# Only 2 grupos
-futbol2 <- dplyr::filter(futbol, longp \%in\% c("< 0.81 m", "0.81 a 0.90 m"))
-gg_tmd(futbol2, dist, longp)
+# Only 2 groups
+futbol \%>\%
+  filter(longp \%in\% c("< 0.81 m", "0.81 a 0.90 m")) \%>\%
+  gg_tmd(dist, longp)
 }

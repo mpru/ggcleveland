@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The gg_sl function — gg_sl • ggcleveland</title>
+<title>Spread-Location plot — gg_sl • ggcleveland</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="The gg_sl function — gg_sl" />
+<meta property="og:title" content="Spread-Location plot — gg_sl" />
 <meta property="og:description" content="Returns a spread-location plot." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggcleveland</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -80,27 +80,18 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/ggplot-cleveland.html">Gráficos de Cleveland en versión ggplot2</a>
-    </li>
-  </ul>
+  <a href="../articles/ggplot-cleveland.html">Artículos / Articles</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Referencias / References</a>
+</li>
+<li>
+  <a href="../news/index.html">Novedades / News</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -129,8 +120,8 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>The gg_sl function</h1>
-    <small class="dont-index">Source: <a href='http://github.com/mpru/ggcleveland/blob/master/R/gg_sl.R'><code>R/gg_sl.R</code></a></small>
+    <h1>Spread-Location plot</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mpru/ggcleveland/blob/master/R/gg_sl.R'><code>R/gg_sl.R</code></a></small>
     <div class="hidden name"><code>gg_sl.Rd</code></div>
     </div>
 
@@ -145,7 +136,7 @@
   jitterwidth <span class='op'>=</span> <span class='fl'>0.1</span>,
   jitteralpha <span class='op'>=</span> <span class='fl'>0.5</span>,
   linecol <span class='op'>=</span> <span class='st'>"red"</span>,
-  ylabel <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='st'>" Residuos "</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  ylabel <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='st'>" Residuals "</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
   xlabel <span class='op'>=</span> <span class='st'>"Medians"</span>
 <span class='op'>)</span></pre>
 
@@ -191,11 +182,14 @@
     <p>a ggplot object with the spread-location plot</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>fusion</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+
 <span class='fu'>gg_sl</span><span class='op'>(</span><span class='va'>fusion</span>, <span class='va'>time</span>, <span class='va'>nv.vv</span><span class='op'>)</span>
-</div><div class='img'><img src='gg_sl-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>gg_sl</span><span class='op'>(</span><span class='va'>fusion</span>, <span class='va'>time</span>, <span class='va'>nv.vv</span>, jitterwidth <span class='op'>=</span> <span class='fl'>0.4</span>, linecol <span class='op'>=</span> <span class='st'>"blue"</span>,
-      ylabel <span class='op'>=</span> <span class='st'>"hola"</span>, jitteralpha <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
-      <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_hue.html'>scale_color_discrete</a></span><span class='op'>(</span><span class='st'>"Grupo"</span><span class='op'>)</span>
+</div><div class='img'><img src='gg_sl-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>gg_sl</span><span class='op'>(</span><span class='va'>fusion</span>, <span class='va'>time</span>, <span class='va'>nv.vv</span>, jitterwidth <span class='op'>=</span> <span class='fl'>0.4</span>, linecol <span class='op'>=</span> <span class='st'>"blue"</span>,
+      jitteralpha <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html'>scale_color_discrete</a></span><span class='op'>(</span><span class='st'>"Grupo"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>xlim</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>8</span><span class='op'>)</span>
 </div><div class='img'><img src='gg_sl-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>

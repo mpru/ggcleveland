@@ -1,4 +1,4 @@
-#' The gg_pt function
+#' Plots for power transformations
 #'
 #' Returns normal QQ plots for a set of power transformations. If there are
 #' groups in the data, transformations can be applied separately to each of
@@ -19,15 +19,21 @@
 #' @export
 #'
 #' @examples
+#' library(dplyr)
+#'
 #' # Without groups
-#' data(fusion)
-#' gg_pt(dplyr::filter(fusion, nv.vv == "VV"), time)
-#' gg_pt(dplyr::filter(fusion, nv.vv == "VV"), time, taus = c(-0.25, -0.5, -1, 0),
-#'       xlabel = "Cuantiles normales", ylabel = "Valores transformados",
-#'       nrow = 3, color = "red")
+#' fusion %>%
+#'   filter(nv.vv == "VV") %>%
+#'   gg_pt(time)
+#'
+#' fusion %>%
+#'   filter(nv.vv == "VV") %>%
+#'   gg_pt(time, taus = c(-0.25, -0.5, -1, 0),
+#'         xlabel = "Cuantiles normales", ylabel = "Valores transformados",
+#'         nrow = 3, color = "red")
 #'
 #' # With groups
-#' gg_pt(fusion, time, nv.vv)
+#' gg_pt(fusion, time, nv.vv, taus = c(-0.5, -0.25, 0, 0.25, 0.5))
 #'
 gg_pt <- function(df, vble, group = NULL,
 									taus = c(-1, -.5, -.25, 0, .25, .5, 1),
@@ -60,6 +66,7 @@ gg_pt <- function(df, vble, group = NULL,
 			mutate(groups = pull(df, !!group)) %>%
 			tidyr::pivot_longer(cols = -starts_with("groups"), names_to = "tau", values_to = "y")
 	}
+	datos_pot$tau <- as.numeric(datos_pot$tau)
 
 	# Graficar
 	g <- ggplot(datos_pot, aes(sample = .data$y)) +

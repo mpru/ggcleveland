@@ -44,7 +44,7 @@ a ggplot
 Returns Tukey's Mean-Difference plot for paired data (both variables must be measured in the same scale).
 }
 \details{
-Differences are computed as `vble1 - vble2`
+Differences are computed as `vble1 - vble2`.
 }
 \examples{
 gg_tmd_paired(ozone, stamford, yonkers)

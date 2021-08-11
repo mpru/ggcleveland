@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_rf.R
 \name{gg_rf}
 \alias{gg_rf}
-\title{The gg_rf function}
+\title{Residual-Fit plot}
 \usage{
 gg_rf(
   df,
@@ -54,11 +54,18 @@ The option to include the centered observed values as part of this
   plot was inspired by work done by Eng. German Beltzer in lattice.
 }
 \examples{
+library(dplyr)
+data(futbol)
 
-datos <- dplyr::group_by(futbol, longp)
-datos <- dplyr::mutate(datos, ajuste = mean(dist), res = dist - ajuste)
+datos <-
+  futbol \%>\%
+  group_by(longp) \%>\%
+  mutate(ajuste = mean(dist), res = dist - ajuste)
+
 gg_rf(datos, dist, ajuste, res)
+
 gg_rf(datos, dist, ajuste, res, cen_obs = TRUE)
+
 gg_rf(datos, dist, ajuste, res, cen_obs = TRUE,
       cen_obs_label = "Obs centradas", cen_fit_label = "Ajustados menos media",
       res_label = "Residuos", xlabel = "valor f", ylabel = "Distancia (m)",

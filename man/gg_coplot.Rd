@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_coplot.R
 \name{gg_coplot}
 \alias{gg_coplot}
-\title{The gg_coplot function}
+\title{Conditional plots}
 \usage{
 gg_coplot(
   df,
@@ -98,6 +98,8 @@ If the number of bins is equal to the number of unique values in the
   `graphics::co.interval` is called.
 }
 \examples{
+data(ruber)
+
 # Slicing con intervalos solapados
 gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
   number_bins = 6, overlap = 3/4,
@@ -112,6 +114,7 @@ gg_coplot(galaxy, x = posicion.radial, y = velocidad,
   facet_label = "Ángulo (grado)", facets_nrow = 2, intervals_height = 0.2,
   xlabel = "Posición radial (arcsec)", ylabel = "Velocidad (km/s)")
 
+data(galaxy)
 gg_coplot(galaxy, x = este.oeste, y = norte.sur, faceting = velocidad,
   number_bins = 25, overlap = 0,  size = 0.5,
   ylabel = "Coordenada sur-norte jittered (arcsec)",

@@ -1,6 +1,6 @@
 Package: ggcleveland
-Title: Implementation of plots from Cleveland's Visualizing Data book in ggplot2
-Version: 0.0.1.9000
+Title: Implementation in 'ggplot2' of Plots from Cleveland's Visualizing Data Book
+Version: 0.1.0
 Authors@R: c(
   person(given = "Marcos",
          family = "Prunello",
@@ -13,11 +13,14 @@ Authors@R: c(
          role = c("aut")
          )
   )
-Description: This packages provides functions to produce ggplot versions for 
-	some visualizations tools described in Cleveland's book "Visualizing Data". This
-	package is experimental and was thought to be used in the context of a course on 
-	exploratory data analysis. Any contributions or feedback are appreciated. Note
-	that this package does not create any new stats or geom layers.
+Description: William S. Cleveland's book 'Visualizing Data' is a classic piece 
+	of literature on Exploratory Data Analysis. Although it was written 
+	several decades ago, its content is still relevant as it proposes several 
+	tools which are useful to discover patterns and relationships among the data 
+	under study, and also to assess the goodness of fit o a model.  This package 
+	provides functions to produce the 'ggplot2' versions of the visualization tools 
+	described in this book and is thought to be used in the context of courses on 
+	Exploratory Data Analysis.
 Depends: R (>= 3.6.0)
 Imports:
     dplyr,
@@ -32,11 +35,11 @@ Imports:
     lattice,
     tibble,
     stringr
-License: GPL-2 | file LICENSE
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
-URL: http://github.com/mpru/ggcleveland
-BugReports: http://github.com/mpru/ggcleveland/issues
+URL: https://github.com/mpru/ggcleveland
+BugReports: https://github.com/mpru/ggcleveland/issues
 RoxygenNote: 7.1.1
 Suggests: 
     testthat,

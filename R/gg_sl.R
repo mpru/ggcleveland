@@ -1,4 +1,4 @@
-#' The gg_sl function
+#' Spread-Location plot
 #'
 #' Returns a spread-location plot.
 #'
@@ -16,15 +16,18 @@
 #' @importFrom dplyr enquo
 #' @export
 #' @examples
-#' data(fusion)
+#' library(ggplot2)
+#'
 #' gg_sl(fusion, time, nv.vv)
+#'
 #' gg_sl(fusion, time, nv.vv, jitterwidth = 0.4, linecol = "blue",
-#'       ylabel = "hola", jitteralpha = 1) +
-#'       ggplot2::scale_color_discrete("Grupo")
+#'       jitteralpha = 1) +
+#'   scale_color_discrete("Grupo") +
+#'   xlim(2, 8)
 #'
 gg_sl <- function(df, vble, group,
 									jitterwidth = 0.1, jitteralpha = 0.5, linecol = "red",
-									ylabel = expression(sqrt(abs( " Residuos "))),
+									ylabel = expression(sqrt(abs( " Residuals "))),
 									xlabel = "Medians") {
 
 	# NSE y controles

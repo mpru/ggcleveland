@@ -1,5 +1,6 @@
 # Función que crea datasets listos para graficar coplots con el algoritmo de equal count
-#' The make_coplot_df function
+
+#' Creation of tibbles por coplots
 #'
 #' It creates dataframes to be used in coplot
 #'
@@ -103,7 +104,7 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5, equal_lengt
 	return(list(df_expanded = df_expanded, intervals = intervals))
 }
 
-#' The gg_coplot function
+#' Conditional plots
 #'
 #' Implements conditional plots or coplots.
 #'
@@ -151,6 +152,8 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5, equal_lengt
 #' @export
 #'
 #' @examples
+#' data(ruber)
+#'
 #' # Slicing con intervalos solapados
 #' gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
 #'   number_bins = 6, overlap = 3/4,
@@ -165,6 +168,7 @@ make_coplot_df <- function(df, vble, number_bins = 6, overlap = 0.5, equal_lengt
 #'   facet_label = "Ángulo (grado)", facets_nrow = 2, intervals_height = 0.2,
 #'   xlabel = "Posición radial (arcsec)", ylabel = "Velocidad (km/s)")
 #'
+#' data(galaxy)
 #' gg_coplot(galaxy, x = este.oeste, y = norte.sur, faceting = velocidad,
 #'   number_bins = 25, overlap = 0,  size = 0.5,
 #'   ylabel = "Coordenada sur-norte jittered (arcsec)",

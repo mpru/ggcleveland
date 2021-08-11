@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggcleveland</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -39,27 +39,18 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/ggplot-cleveland.html">Gráficos de Cleveland en versión ggplot2</a>
-    </li>
-  </ul>
+  <a href="../articles/ggplot-cleveland.html">Artículos / Articles</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Referencias / References</a>
+</li>
+<li>
+  <a href="../news/index.html">Novedades / News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -85,79 +76,53 @@
 
       
 
-      </header><script src="ggplot-cleveland_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="ggplot-cleveland_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Gráficos de Cleveland en versión ggplot2</h1>
             
       
-      <small class="dont-index">Source: <a href="http://github.com/mpru/ggcleveland/blob/master/vignettes/ggplot-cleveland.Rmd"><code>vignettes/ggplot-cleveland.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mpru/ggcleveland/blob/master/vignettes/ggplot-cleveland.Rmd"><code>vignettes/ggplot-cleveland.Rmd</code></a></small>
       <div class="hidden name"><code>ggplot-cleveland.Rmd</code></div>
 
     </div>
 
     
     
-<p>|||||| <strong>Work in progress</strong> |||||| <strong>En construcción</strong> ||||||</p>
-<div id="the-ggcleveland-r-package" class="section level1">
-<h1 class="hasAnchor">
-<a href="#the-ggcleveland-r-package" class="anchor"></a>The ggcleveland R package</h1>
-<p>|||||| <strong>Work in progress</strong> |||||| <strong>En construcción</strong> ||||||</p>
-<!-- badges: start -->
-<p><a href="https://CRAN.R-project.org/package=ggcleveland"><img src="https://www.r-pkg.org/badges/version/karel" alt="CRAN status"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <a href="https://cran.rstudio.com/package=ggcleveland"><img src="https://cranlogs.r-pkg.org/badges/ggcleveland?color=blue" alt="Downloads"></a> <!-- badges: end --></p>
-<p>Web: <a href="https://mpru.github.io/ggcleveland/">https://mpru.github.io/ggcleveland/</a></p>
-<p>Este paquete implementa algunas funciones para crear las versiones en <code>ggplot2</code> de algunos gráficos presentados por Cleveland en su libro “Visualizing Data”. Ha sido creado para ser usado en cursos de Análisis Exploratorio de Datos. Se encuentra en desarrollo y aún no ha sido usado con diversos conjuntos de datos. Cualquier comentario o sugerencia es bienvenida.</p>
-<p>This package provides functions to produce ggplot versions for some visualizations tools described in Cleveland’s book “Visualizing Data”. It is an experimental package, and was thought to be used in the context of a course on exploratory data analysis. Any contributions or feedback are appreciated.</p>
-<div id="instalación-instalation" class="section level2">
+<div id="introducción" class="section level2">
 <h2 class="hasAnchor">
-<a href="#instalaci%C3%B3n-instalation" class="anchor"></a>Instalación / Instalation</h2>
-<!-- 
-You can install the released version of karel from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("karel")
-```
--->
-<p>Se puede instalar la versión en desarrollo del paquete <code>ggcleveland</code> desde <a href="https://github.com/mpru/ggcleveland">GitHub</a> con:</p>
+<a href="#introducci%C3%B3n" class="anchor"></a>Introducción</h2>
+<p>En este material se presentan ejemplos de las funciones ofrecidas por el paquete <code>ggcleveland</code>, todas ellas destinadas al Análisis Exploratorio de Datos.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"mpru/karel"</span><span class="op">)</span></code></pre></div>
-</div>
-<div id="ejemplos-examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ejemplos-examples" class="anchor"></a>Ejemplos / Examples</h2>
-<div id="gg_quantiles" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gg_quantiles" class="anchor"></a>gg_quantiles</h3>
-<p>La función <code><a href="../reference/gg_quantiles.html">gg_quantiles()</a></code> produce gráficos QQ (cuantil-cuantil) para comparar la distribución de una variable cuantitativa en dos o más grupos:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Paquetes, datos y configuraciones</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/mpru/ggcleveland">ggcleveland</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="co"># Paquetes necesarios y otras configuraciones</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mpru/ggcleveland">ggcleveland</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"futbol"</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="gráficos-de-cuantiles" class="section level2">
+<h2 class="hasAnchor">
+<a href="#gr%C3%A1ficos-de-cuantiles" class="anchor"></a>Gráficos de cuantiles</h2>
+<p>El dataset <code>futbol</code> contiene datos sobre la distancia (<code>dist</code>) que recorre la pelota al ser pateada por jugadores de fútbol según la longitud de pierna (<code>long</code>) del pateador, que se encuentra categorizada. El objetivo es determinar si la distancia está relacionada con la longitud de pierna. Se podría esperar que los jugadores de piernas más largas tengan una contextura física mayor y por lo tanto mayor potencia al patear.</p>
+<p>La función <code><a href="../reference/gg_quantiles.html">gg_quantiles()</a></code> produce gráficos QQ (cuantil-cuantil) para comparar la distribución de una variable cuantitativa en dos o más grupos:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">futbol</span><span class="op">)</span>
 
-<span class="co"># Dos grupos</span>
-<span class="va">futbol2</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">longp</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt; 0.81 m"</span>, <span class="st">"0.81 a 0.90 m"</span><span class="op">)</span><span class="op">)</span>
+<span class="co"># Quedarse con solo dos grupos</span>
+<span class="va">futbol2</span> <span class="op">&lt;-</span>   
+  <span class="va">futbol</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">longp</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt; 0.81 m"</span>, <span class="st">"0.81 a 0.90 m"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Gráfico de cuantiles para dos grupos</span>
 <span class="fu"><a href="../reference/gg_quantiles.html">gg_quantiles</a></span><span class="op">(</span><span class="va">futbol2</span>, <span class="va">dist</span>, <span class="va">longp</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-2-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Más de dos grupos</span>
 <span class="fu"><a href="../reference/gg_quantiles.html">gg_quantiles</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">dist</span>, <span class="va">longp</span>, size <span class="op">=</span> <span class="fl">0.4</span>, color <span class="op">=</span> <span class="st">"red"</span>, shape <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Gráficos QQ de a pares"</span>, x <span class="op">=</span> <span class="st">"Distancia (m)"</span>, y <span class="op">=</span> <span class="st">"Distancia (m)"</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Use of `dataTexto$varX` is discouraged. Use `varX` instead.</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-2-2.png" width="576" style="display: block; margin: auto;"></p>
-<p>También permite graficar los cuantiles de cada grupos vs cuantiles calculados con todos los grupos combinados. Esto puede ser útil para estudiar residuos luego de algún ajuste:</p>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Gráficos QQ de a pares"</span>, x <span class="op">=</span> <span class="st">"Distancia (m)"</span>, y <span class="op">=</span> <span class="st">"Distancia (m)"</span><span class="op">)</span></code></pre></div>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-3-2.png" width="576" style="display: block; margin: auto;"></p>
+<p>También permite graficar los cuantiles de cada grupo vs cuantiles calculados con todos los grupos combinados. Esto puede ser útil para estudiar residuos luego de algún ajuste, con el objetivo de evaluar la homogeneidad de los mismos. En el siguiente ejemplo, se realiza un ajuste por la media (como en un modelo lineal) y se comparar los residuos de cada grupo versus todos los residuos juntos:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">futbol</span> <span class="op">&lt;-</span> 
   <span class="va">futbol</span> <span class="op">%&gt;%</span> 
@@ -165,72 +130,77 @@ install.packages("karel")
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ajuste <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dist</span><span class="op">)</span>, res <span class="op">=</span> <span class="va">dist</span> <span class="op">-</span> <span class="va">ajuste</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/gg_quantiles.html">gg_quantiles</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">res</span>, <span class="va">longp</span>, combined <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;"></p>
 </div>
-<div id="gg_tmd" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gg_tmd" class="anchor"></a>gg_tmd</h3>
-<p>Las funciones <code><a href="../reference/gg_tmd.html">gg_tmd()</a></code> y <code><a href="../reference/gg_tmd_paired.html">gg_tmd_paired()</a></code> producen el gráfico de medias-diferencias de Tukey (Tukey’s Mean-Difference Plot):</p>
+<div id="el-gráfico-media-diferencia-de-tukey-" class="section level2">
+<h2 class="hasAnchor">
+<a href="#el-gr%C3%A1fico-media-diferencia-de-tukey-" class="anchor"></a>El gráfico Media-Diferencia de Tukey.</h2>
+<p>Las funciones <code><a href="../reference/gg_tmd.html">gg_tmd()</a></code> y <code><a href="../reference/gg_tmd_paired.html">gg_tmd_paired()</a></code> producen el gráfico de medias-diferencias de Tukey (Tukey’s Mean-Difference Plot), que puede ser utilizado para evaluar visualmente el desplazamiento entre 2 o más distribuciones:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Dos grupos</span>
 <span class="fu"><a href="../reference/gg_tmd.html">gg_tmd</a></span><span class="op">(</span><span class="va">futbol2</span>, <span class="va">dist</span>, <span class="va">longp</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Múltiples grupos</span>
-<span class="fu"><a href="../reference/gg_tmd.html">gg_tmd</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">dist</span>, <span class="va">longp</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Use of `dataTexto$varX` is discouraged. Use `varX` instead.</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-4-2.png" width="576" style="display: block; margin: auto;"></p>
+<span class="fu"><a href="../reference/gg_tmd.html">gg_tmd</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">dist</span>, <span class="va">longp</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-5-2.png" width="576" style="display: block; margin: auto;"></p>
+<p>Cuando se tienen dos muestras apareadas, se debe utilizar la función <code><a href="../reference/gg_tmd_paired.html">gg_tmd_paired()</a></code>, que requiere la misma cantidad de observaciones en cada grupo y que las variables estén medidas en la misma escala, como ocurre con el dataset <code>ozone</code>, el cual presenta la concentración de ozono en dos ciudades distintas durante los mismos días:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Datos apareados</span>
-<span class="fu"><a href="../reference/gg_tmd_paired.html">gg_tmd_paired</a></span><span class="op">(</span><span class="va">ozone</span>, <span class="va">stamford</span>, <span class="va">yonkers</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-4-3.png" width="576" style="display: block; margin: auto;"></p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">ozone</span><span class="op">)</span>
+<span class="fu"><a href="../reference/gg_tmd_paired.html">gg_tmd_paired</a></span><span class="op">(</span><span class="va">ozone</span>, <span class="va">stamford</span>, <span class="va">yonkers</span><span class="op">)</span></code></pre></div>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-6-1.png" width="576" style="display: block; margin: auto;"></p>
 </div>
-<div id="gg_rf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gg_rf" class="anchor"></a>gg_rf</h3>
-<p>La función <code><a href="../reference/gg_rf.html">gg_rf()</a></code> produce un <em>residual-fit plot</em> (gráfico de residuos y valores ajustados):</p>
+<div id="gráfico-de-residuos-y-valores-ajustados" class="section level2">
+<h2 class="hasAnchor">
+<a href="#gr%C3%A1fico-de-residuos-y-valores-ajustados" class="anchor"></a>Gráfico de residuos y valores ajustados</h2>
+<p>La función <code><a href="../reference/gg_rf.html">gg_rf()</a></code> produce un <em>residual-fit plot</em> (gráfico de residuos y valores ajustados), que permite comparar la dispersión de los residuos de un ajuste y de los valores ajustados, dando una idea de la variabilidad total explicada por el ajuste del modelo:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gg_rf.html">gg_rf</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">dist</span>, <span class="va">ajuste</span>, <span class="va">res</span>, ylabel <span class="op">=</span> <span class="st">"Distancia (m)"</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Agregando las observaciones centradas por la media general</span>
 <span class="fu"><a href="../reference/gg_rf.html">gg_rf</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">dist</span>, <span class="va">ajuste</span>, <span class="va">res</span>, cen_obs <span class="op">=</span> <span class="cn">TRUE</span>, ylabel <span class="op">=</span> <span class="st">"Distancia (m)"</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-5-2.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-7-2.png" width="576" style="display: block; margin: auto;"></p>
 </div>
-<div id="gg_sl" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gg_sl" class="anchor"></a>gg_sl</h3>
-<p>La función <code><a href="../reference/gg_sl.html">gg_sl()</a></code> produce un <em>spread-location plot</em>:</p>
+<div id="gráfico-de-dispersión-posición-spread-location-plot" class="section level2">
+<h2 class="hasAnchor">
+<a href="#gr%C3%A1fico-de-dispersi%C3%B3n-posici%C3%B3n-spread-location-plot" class="anchor"></a>Gráfico de dispersión-posición (<em>spread-location plot</em>)</h2>
+<p>La función <code><a href="../reference/gg_sl.html">gg_sl()</a></code> produce un <em>spread-location plot</em>, una herramienta que busca detectar cambios en dispersión, reduciéndolo a un problema de observación de la posición.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/gg_sl.html">gg_sl</a></span><span class="op">(</span><span class="va">futbol2</span>, <span class="va">dist</span>, <span class="va">longp</span>, xlabel <span class="op">=</span> <span class="st">"Mediana de distancia jittered (m)"</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-6-1.png" width="576" style="display: block; margin: auto;"></p>
+<code class="sourceCode R"><span class="fu"><a href="../reference/gg_sl.html">gg_sl</a></span><span class="op">(</span><span class="va">futbol2</span>, <span class="va">dist</span>, <span class="va">longp</span>, xlabel <span class="op">=</span> <span class="st">"Mediana de distancia jittered (m)"</span>, 
+      jitterwidth <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">45</span>, <span class="fl">68</span><span class="op">)</span></code></pre></div>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;"></p>
 </div>
-<div id="gg_pt" class="section level3">
-<h3 class="hasAnchor">
-<a href="#gg_pt" class="anchor"></a>gg_pt</h3>
-<p>La función <code><a href="../reference/gg_pt.html">gg_pt()</a></code> produce un gráfico para evaluar transformaciones de potencia, que consisten en elevar a las observaciones a un conjunto de potencias señaladas en el argumento <code>taus</code>, en el cual el valor 0 indica la transformación logarítmica:</p>
+<div id="gráficos-de-transformaciones-de-potencia" class="section level2">
+<h2 class="hasAnchor">
+<a href="#gr%C3%A1ficos-de-transformaciones-de-potencia" class="anchor"></a>Gráficos de transformaciones de potencia</h2>
+<p>La función <code><a href="../reference/gg_pt.html">gg_pt()</a></code> produce gráficos QQ Normal para evaluar transformaciones de potencia, que consisten en elevar a las observaciones a un conjunto de potencias señaladas en el argumento <code>tau</code>, en el cual el valor 0 indica la transformación logarítmica:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/gg_pt.html">gg_pt</a></span><span class="op">(</span><span class="va">futbol2</span>, <span class="va">dist</span>, taus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;"></p>
+<code class="sourceCode R"><span class="fu"><a href="../reference/gg_pt.html">gg_pt</a></span><span class="op">(</span><span class="va">futbol2</span>, <span class="va">dist</span>, taus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">0.5</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-9-1.png" width="624" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Para cada grupo por separado</span>
+<code class="sourceCode R"><span class="co"># Para cada grupo por separado</span>
 <span class="fu"><a href="../reference/gg_pt.html">gg_pt</a></span><span class="op">(</span><span class="va">futbol2</span>, <span class="va">dist</span>, <span class="va">longp</span>, taus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-7-2.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-10-1.png" width="624" style="display: block; margin: auto;"></p>
+</div>
+<div id="gráficos-condicionantes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#gr%C3%A1ficos-condicionantes" class="anchor"></a>Gráficos condicionantes</h2>
+<p>La función <code><a href="../reference/gg_coplot.html">gg_coplot()</a></code> produce <em>conditioning plots</em> o <em>coplots</em>, los cuales son una herramienta de visualización útil para estudiar cómo una variable respuesta depende de 2 o más factores. Un <strong>coplot</strong> permite visualizar dependencia condicional. El panel superior indica cada rango de valores de la variable condicionante a los cuales queda condicionada la relación que se observa entre las otras dos variables en los paneles inferiores, que pueden considerarse como los paneles dependientes.</p>
+<p>Se ejemplifica con los datos <code>rubber</code>, que tratan sobre un experimento industrial donde se probó el efecto de un material abrasivo sobre 30 piezas de caucho, registrando tres variables.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Slicing con intervalos solapados</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">rubber</span><span class="op">)</span>
+<span class="co"># Slicing con intervalos solapados</span>
 <span class="fu"><a href="../reference/gg_coplot.html">gg_coplot</a></span><span class="op">(</span><span class="va">rubber</span>, x <span class="op">=</span> <span class="va">tensile.strength</span>, y <span class="op">=</span> <span class="va">abrasion.loss</span>, faceting <span class="op">=</span> <span class="va">hardness</span>,
   number_bins <span class="op">=</span> <span class="fl">6</span>, overlap <span class="op">=</span> <span class="fl">3</span><span class="op">/</span><span class="fl">4</span>,
   ylabel <span class="op">=</span> <span class="st">"Pérdida de abrasión (g/hp-hour))"</span>,
   xlabel <span class="op">=</span> <span class="st">"Resistencia a la tracción (kg/cm2)"</span>,
   facet_label <span class="op">=</span> <span class="st">"Dureza (grados Shore)"</span>, 
-  loess_family <span class="op">=</span> <span class="st">"symmetric"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;"></p>
+  loess_family <span class="op">=</span> <span class="st">"symmetric"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Slicing con intervalos sin solapamientos, con igual amplitud</span>
@@ -240,7 +210,7 @@ install.packages("karel")
   xlabel <span class="op">=</span> <span class="st">"Resistencia a la tracción (kg/cm2)"</span>,
   facet_label <span class="op">=</span> <span class="st">"Dureza (grados Shore)"</span>, 
   loess <span class="op">=</span> <span class="cn">FALSE</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-8-2.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-11-2.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Slicing con intervalos sin solapamientos, con aprox. igual cantidad de datos</span>
@@ -250,19 +220,19 @@ install.packages("karel")
   xlabel <span class="op">=</span> <span class="st">"Resistencia a la tracción (kg/cm2)"</span>,
   facet_label <span class="op">=</span> <span class="st">"Dureza (grados Shore)"</span>, 
   loess <span class="op">=</span> <span class="cn">FALSE</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-8-3.png" width="576" style="display: block; margin: auto;"></p>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-11-3.png" width="576" style="display: block; margin: auto;"></p>
+<p>En el caso de que la variable condicionante tenga pocos valores distintos, cada uno de ellos puede utilizarse como un panel condicionante para explorar la relación entre las otras dos variables, como ocurre con el dataset <code>galaxy</code>:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">galaxy</span><span class="op">)</span>
+
 <span class="co"># Slicing con los valores únicos de la variable de faceting</span>
 <span class="fu"><a href="../reference/gg_coplot.html">gg_coplot</a></span><span class="op">(</span><span class="va">galaxy</span>, x <span class="op">=</span> <span class="va">posicion.radial</span>, y <span class="op">=</span> <span class="va">velocidad</span>,
   faceting <span class="op">=</span> <span class="va">angulo</span>, number_bins <span class="op">=</span> <span class="fl">7</span>, loess_span <span class="op">=</span> <span class="fl">.5</span>, loess_degree <span class="op">=</span> <span class="fl">2</span>,
   facet_labeller <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Ángulo = "</span>, <span class="va">x</span>, <span class="st">"º"</span><span class="op">)</span>,
   facet_label <span class="op">=</span> <span class="st">"Ángulo (grado)"</span>, facets_nrow <span class="op">=</span> <span class="fl">2</span>, intervals_height <span class="op">=</span> <span class="fl">0.2</span>,
-  xlabel <span class="op">=</span> <span class="st">"Posición radial (arcsec)"</span>, ylabel <span class="op">=</span> <span class="st">"Velocidad (km/s)"</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
-<p><img src="man/figures/README-unnamed-chunk-8-4.png" width="576" style="display: block; margin: auto;"></p>
-</div>
-</div>
+  xlabel <span class="op">=</span> <span class="st">"Posición radial (arcsec)"</span>, ylabel <span class="op">=</span> <span class="st">"Velocidad (km/s)"</span><span class="op">)</span></code></pre></div>
+<p><img src="ggplot-cleveland_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;"></p>
+<p>Para armar los intervalos solapados se emplea el algoritmo de conteos iguales, el cual puede ser implementado por fuera de la construcción del gráfico mediante la función <code><a href="../reference/equal_count.html">equal_count()</a></code>.</p>
 </div>
   </div>
 

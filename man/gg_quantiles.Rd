@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_quantiles.R
 \name{gg_quantiles}
 \alias{gg_quantiles}
-\title{The gg_quantiles function}
+\title{Quantile-Quantile plots}
 \usage{
 gg_quantiles(
   df,
@@ -39,12 +39,16 @@ a ggplot
 Returns a quantile-quantile plot to compare any given number of groups
 }
 \examples{
+library(ggplot2)
 data(futbol)
+
 # Multiple groups
 gg_quantiles(futbol, dist, longp)
-gg_quantiles(futbol, dist, longp, size = 0.4, color = "red", shape = 3)
+gg_quantiles(futbol, dist, longp, size = 0.4, color = "red", shape = 3) +
+  theme(panel.spacing = unit(2, "lines")) +
+  theme_bw()
 
-# Only 2 grupos
+# Only 2 groups
 futbol2 <- dplyr::filter(futbol, longp \%in\% c("< 0.81 m", "0.81 a 0.90 m"))
 gg_quantiles(futbol2, dist, longp)
 

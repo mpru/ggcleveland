@@ -1,4 +1,4 @@
-#' The equal_count function
+#' The equal count algorithm
 #'
 #' This function applies the equal count algorithm to divide a set of observations into intervals which can have certain level of ovelapping. It calls `lattice::equal.count` but extends the output.
 #'

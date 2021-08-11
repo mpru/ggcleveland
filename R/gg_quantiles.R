@@ -1,4 +1,4 @@
-#' The gg_quantiles function
+#' Quantile-Quantile plots
 #'
 #' Returns a quantile-quantile plot to compare any given number of groups
 #'
@@ -22,12 +22,16 @@
 #' @importFrom rlang .data quo_text quo_is_null eval_tidy :=
 #'
 #' @examples
+#' library(ggplot2)
 #' data(futbol)
+#'
 #' # Multiple groups
 #' gg_quantiles(futbol, dist, longp)
-#' gg_quantiles(futbol, dist, longp, size = 0.4, color = "red", shape = 3)
+#' gg_quantiles(futbol, dist, longp, size = 0.4, color = "red", shape = 3) +
+#'   theme(panel.spacing = unit(2, "lines")) +
+#'   theme_bw()
 #'
-#' # Only 2 grupos
+#' # Only 2 groups
 #' futbol2 <- dplyr::filter(futbol, longp %in% c("< 0.81 m", "0.81 a 0.90 m"))
 #' gg_quantiles(futbol2, dist, longp)
 #'
