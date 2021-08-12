@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ggcleveland:
+# ggcleveland
 
 ## Gráficos para Análisis Exploratorio de Datos
 
@@ -13,7 +13,11 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 <!-- badges: end -->
 
+------------------------------------------------------------------------
+
 Web: <https://mpru.github.io/ggcleveland/>
+
+------------------------------------------------------------------------
 
 El libro *Visualizing Data* de William S. Cleveland es una pieza clásica
 en la literatura sobre Análisis Exploratorio de Datos (AED). Habiendo
@@ -71,6 +75,8 @@ library(dplyr)
 library(ggplot2)
 theme_set(theme_bw() + theme(panel.spacing = unit(0, "lines")))
 
+data(rubber)
+
 gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
   number_bins = 6, overlap = 3/4,
   ylabel = "Pérdida de abrasión (g/hp-hour))",
@@ -84,6 +90,8 @@ gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
 *Residual-Fit plots*:
 
 ``` r
+data(futbol)
+
 futbol <- 
   futbol %>% 
   group_by(longp) %>% 

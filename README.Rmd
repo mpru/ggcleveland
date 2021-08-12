@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ggcleveland: 
+# ggcleveland
 
 ## Gráficos para Análisis Exploratorio de Datos
 
@@ -26,7 +26,11 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 <!-- badges: end -->
 
+---
+
 Web: [https://mpru.github.io/ggcleveland/](https://mpru.github.io/ggcleveland/)
+
+---
 
 El libro *Visualizing Data* de William S. Cleveland es una pieza clásica en la literatura sobre Análisis Exploratorio de Datos (AED). Habiendo sido escrito algunas décadas atrás, su contenido sigue siendo relevante ya que propone herramientas útiles para descubrir patrones y relaciones en los datos estudiados, como así también para evaluar ajustes. Este paquete ofrece funciones que producen la versión en `ggplot2` de las herramientas de visualización descriptas en este libro. Fue diseñado como material complementario en cursos sobre AED.
 
@@ -73,6 +77,8 @@ library(dplyr)
 library(ggplot2)
 theme_set(theme_bw() + theme(panel.spacing = unit(0, "lines")))
 
+data(rubber)
+
 gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
   number_bins = 6, overlap = 3/4,
   ylabel = "Pérdida de abrasión (g/hp-hour))",
@@ -84,6 +90,8 @@ gg_coplot(rubber, x = tensile.strength, y = abrasion.loss, faceting = hardness,
 *Residual-Fit plots*:
 
 ```{r, fig.height=2.5, fig.width=6}
+data(futbol)
+
 futbol <- 
   futbol %>% 
   group_by(longp) %>% 

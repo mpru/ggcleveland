@@ -1,5 +1,5 @@
 Package: ggcleveland
-Title: Implementation in 'ggplot2' of Plots from Cleveland's Visualizing Data Book
+Title: Implementation of Plots from Cleveland's Visualizing Data Book
 Version: 0.1.0
 Authors@R: c(
   person(given = "Marcos",
