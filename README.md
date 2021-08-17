@@ -11,11 +11,15 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ggcleveland)](https://CRAN.R-project.org/package=ggcleveland)
 <!-- badges: end -->
 
 ------------------------------------------------------------------------
 
 Web: <https://mpru.github.io/ggcleveland/>
+
+CRAN: <https://CRAN.R-project.org/package=ggcleveland>
 
 ------------------------------------------------------------------------
 
@@ -41,16 +45,19 @@ used in the context of courses on EDA.
 
 ## Instalación / Instalation
 
-<!-- 
-You can install the released version of karel from [CRAN](https://CRAN.R-project.org) with:
+Podés instalar `ggcleveland` desde
+[CRAN](https://CRAN.R-project.org/package=ggcleveland) / You can install
+`ggcleveland` from
+[CRAN](https://CRAN.R-project.org/package=ggcleveland):
 
 ``` r
-install.packages("karel")
+install.packages("ggcleveland")
 ```
--->
 
-Se puede instalar la versión en desarrollo del paquete `ggcleveland`
-desde [GitHub](https://github.com/mpru/ggcleveland) con:
+También podés instalar la versión en desarrollo del paquete
+`ggcleveland` desde [GitHub](https://github.com/mpru/ggcleveland) / You
+can also install the development version from
+[GitHub](https://github.com/mpru/ggcleveland):
 
 ``` r
 # install.packages("devtools")

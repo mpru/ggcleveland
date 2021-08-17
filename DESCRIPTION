@@ -1,6 +1,6 @@
 Package: ggcleveland
 Title: Implementation of Plots from Cleveland's Visualizing Data Book
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
   person(given = "Marcos",
          family = "Prunello",
@@ -17,7 +17,7 @@ Description: William S. Cleveland's book 'Visualizing Data' is a classic piece
 	of literature on Exploratory Data Analysis. Although it was written 
 	several decades ago, its content is still relevant as it proposes several 
 	tools which are useful to discover patterns and relationships among the data 
-	under study, and also to assess the goodness of fit o a model.  This package 
+	under study, and also to assess the goodness of fit of a model.  This package 
 	provides functions to produce the 'ggplot2' versions of the visualization tools 
 	described in this book and is thought to be used in the context of courses on 
 	Exploratory Data Analysis.
@@ -38,7 +38,7 @@ Imports:
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/mpru/ggcleveland
+URL: https://mpru.github.io/ggcleveland
 BugReports: https://github.com/mpru/ggcleveland/issues
 RoxygenNote: 7.1.1
 Suggests: 

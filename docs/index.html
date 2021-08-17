@@ -5,18 +5,18 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Implementation in ggplot2 of Plots from Cleveland's Visualizing Data Book • ggcleveland</title>
+<title>Implementation of Plots from Cleveland's Visualizing Data Book • ggcleveland</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Implementation in ggplot2 of Plots from Cleveland's Visualizing Data Book">
+<script src="pkgdown.js"></script><meta property="og:title" content="Implementation of Plots from Cleveland's Visualizing Data Book">
 <meta property="og:description" content="William S. Clevelands book Visualizing Data is a classic piece 
 	of literature on Exploratory Data Analysis. Although it was written 
 	several decades ago, its content is still relevant as it proposes several 
 	tools which are useful to discover patterns and relationships among the data 
-	under study, and also to assess the goodness of fit o a model.  This package 
+	under study, and also to assess the goodness of fit of a model.  This package 
 	provides functions to produce the ggplot2' versions of the visualization tools 
 	described in this book and is thought to be used in the context of courses on 
 	Exploratory Data Analysis.">
@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ggcleveland</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
   <div class="contents col-md-9">
 <div id="ggcleveland" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#ggcleveland" class="anchor"></a>ggcleveland:</h1></div>
+<a href="#ggcleveland" class="anchor"></a>ggcleveland</h1></div>
 <div id="gráficos-para-análisis-exploratorio-de-datos" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gr%C3%A1ficos-para-an%C3%A1lisis-exploratorio-de-datos" class="anchor"></a>Gráficos para Análisis Exploratorio de Datos</h2>
@@ -97,7 +97,10 @@
 <a href="#plots-for-exploratory-data-analysis" class="anchor"></a>Plots for Exploratory Data Analysis</h2>
 <!-- badges: start -->
 
+<hr>
 <p>Web: <a href="https://mpru.github.io/ggcleveland/" class="uri">https://mpru.github.io/ggcleveland/</a></p>
+<p>CRAN: <a href="https://CRAN.R-project.org/package=ggcleveland" class="uri">https://CRAN.R-project.org/package=ggcleveland</a></p>
+<hr>
 <p>El libro <em>Visualizing Data</em> de William S. Cleveland es una pieza clásica en la literatura sobre Análisis Exploratorio de Datos (AED). Habiendo sido escrito algunas décadas atrás, su contenido sigue siendo relevante ya que propone herramientas útiles para descubrir patrones y relaciones en los datos estudiados, como así también para evaluar ajustes. Este paquete ofrece funciones que producen la versión en <code>ggplot2</code> de las herramientas de visualización descriptas en este libro. Fue diseñado como material complementario en cursos sobre AED.</p>
 <hr>
 <p>William S. Cleveland’s book ‘Visualizing Data’ is a classic piece of literature on Exploratory Data Analysis (EDA). Although it was written several decades ago, its content is still relevant as it proposes several tools which are useful to discover patterns and relationships among the data under study, and also to assess the goodness of fit o a model. This package provides functions to produce the ggplot2 versions of the visualization tools described in this book and is thought to be used in the context of courses on EDA.</p>
@@ -105,15 +108,11 @@
 <div id="instalación--instalation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#instalaci%C3%B3n--instalation" class="anchor"></a>Instalación / Instalation</h2>
-<!-- 
-You can install the released version of karel from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("karel")
-```
--->
-<p>Se puede instalar la versión en desarrollo del paquete <code>ggcleveland</code> desde <a href="https://github.com/mpru/ggcleveland">GitHub</a> con:</p>
+<p>Podés instalar <code>ggcleveland</code> desde <a href="https://CRAN.R-project.org/package=ggcleveland">CRAN</a> / You can install <code>ggcleveland</code> from <a href="https://CRAN.R-project.org/package=ggcleveland">CRAN</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggcleveland"</span><span class="op">)</span></code></pre></div>
+<p>También podés instalar la versión en desarrollo del paquete <code>ggcleveland</code> desde <a href="https://github.com/mpru/ggcleveland">GitHub</a> / You can also install the development version from <a href="https://github.com/mpru/ggcleveland">GitHub</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"mpru/ggcleveland"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -124,11 +123,13 @@ install.packages("karel")
 <hr>
 <p>You can explore examples of each of the plots produced by this package in the vignettes. Some of them are:</p>
 <p><em>Gráficos condicionales / Coplots</em>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/mpru/ggcleveland">ggcleveland</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">rubber</span><span class="op">)</span>
 
 <span class="fu"><a href="reference/gg_coplot.html">gg_coplot</a></span><span class="op">(</span><span class="va">rubber</span>, x <span class="op">=</span> <span class="va">tensile.strength</span>, y <span class="op">=</span> <span class="va">abrasion.loss</span>, faceting <span class="op">=</span> <span class="va">hardness</span>,
   number_bins <span class="op">=</span> <span class="fl">6</span>, overlap <span class="op">=</span> <span class="fl">3</span><span class="op">/</span><span class="fl">4</span>,
@@ -138,8 +139,10 @@ install.packages("karel")
   loess_family <span class="op">=</span> <span class="st">"symmetric"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" style="display: block; margin: auto;"></p>
 <p><em>Residual-Fit plots</em>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">futbol</span> <span class="op">&lt;-</span> 
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">futbol</span><span class="op">)</span>
+
+<span class="va">futbol</span> <span class="op">&lt;-</span> 
   <span class="va">futbol</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">longp</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ajuste <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dist</span><span class="op">)</span>, res <span class="op">=</span> <span class="va">dist</span> <span class="op">-</span> <span class="va">ajuste</span><span class="op">)</span>
@@ -147,7 +150,7 @@ install.packages("karel")
 <span class="fu"><a href="reference/gg_rf.html">gg_rf</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">dist</span>, <span class="va">ajuste</span>, <span class="va">res</span>, cen_obs <span class="op">=</span> <span class="cn">TRUE</span>, ylabel <span class="op">=</span> <span class="st">"Distancia (m)"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" style="display: block; margin: auto;"></p>
 <p><em>Gráfico Media-Diferencia de Tukey / Tukey’s MD Plot</em>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/gg_tmd.html">gg_tmd</a></span><span class="op">(</span><span class="va">futbol</span>, <span class="va">dist</span>, <span class="va">longp</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" style="display: block; margin: auto;"></p>
 </div>
@@ -158,6 +161,8 @@ install.packages("karel")
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=ggcleveland">https://​cloud.r-project.org/​package=ggcleveland</a>
+</li>
 <li>Mira el código/Browse source code at <br><a href="https://github.com/mpru/ggcleveland">https://​github.com/​mpru/​ggcleveland</a>
 </li>
 <li>Reporta un problema/Report a bug at <br><a href="https://github.com/mpru/ggcleveland/issues">https://​github.com/​mpru/​ggcleveland/​issues</a>
@@ -182,6 +187,7 @@ install.packages("karel")
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=ggcleveland"><img src="https://www.r-pkg.org/badges/version/ggcleveland" alt="CRAN status"></a></li>
 </ul>
 </div>
 </div>
