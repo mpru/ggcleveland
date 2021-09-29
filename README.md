@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ggcleveland
+# ggcleveland <img src="man/figures/logo.png" align="right" alt="" width="160" />
 
 ## Gráficos para Análisis Exploratorio de Datos
 
@@ -12,7 +12,8 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/ggcleveland)](https://CRAN.R-project.org/package=ggcleveland)
+status](https://www.r-pkg.org/badges/version/ggcleveland?color=orange)](https://CRAN.R-project.org/package=ggcleveland)
+[![Downloads](https://cranlogs.r-pkg.org/badges/ggcleveland?color=orange)](https://CRAN.R-project.org/package=ggcleveland)
 <!-- badges: end -->
 
 ------------------------------------------------------------------------
